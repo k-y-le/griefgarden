@@ -12,7 +12,7 @@ function getCloseCompanions(cell) {
         for(var j=-4; j<5; j++){
             if(cells[(y+j)*xnum+x+i]) {
                 if(cells[(y+j)*xnum+x+i].plant && cell.plant)  {
-                    if(cell.plant.companions.some(c => c === cells[(y+j)*xnum+x+i].plant.name)) 
+                    if(cell.plant.companions.some(c => c === cells[(y+j)*xnum+x+i].plant.name))
                         {
                             //$(`#${(y+j)*xnum+x+i}`).css({'background-color': 'lightblue'});
                             if(!(companions.some(d => d.plant.name === cells[(y+j)*xnum+x+i].plant.name)))
@@ -29,7 +29,7 @@ function revertCompanions() {
     for(var i=0; i<xnum; i++){
         for(var j=0; j<ynum; j++){
             var color = zoneColors[cells[j*xnum + i].zone - 1];
-            $(`#${j*xnum + i}`).css({'background-color': color});                
+            $(`#${j*xnum + i}`).css({'background-color': color});
         }
     }
 }
@@ -67,13 +67,12 @@ function showInfo (cellID) {
         class: 'infobox',
     })
     .appendTo('.infopanel')
-    
+
     var $symbolInfo =  $('<p/>', {
         class: 'symbolinfo',
     })
     .appendTo($substrateInfo)
     .html(cell.substrate.name + "   " + "[<font color= "+ cell.substrate.color +">" + cell.substrate.symbol + "</font>]" + "<br>" +
-     "<p class='artext' lang='ar'>" + cell.substrate.arabic + "</p>" + "<br>" +
         "a kind of " + cell.substrate.type + "</br> </br>")
 
     $('<span/>', {
@@ -93,9 +92,8 @@ function showInfo (cellID) {
         })
         .appendTo($plantInfo)
         .html(cell.plant.name + "   " + "[<font color= "+ cell.plant.color +">" + cell.plant.symbol + "</font>]" + "<br>" +
-            "<p class='artext' lang='ar'>" + cell.plant.arabic + "</p>" + "<br>" +
             "<i>" + cell.plant.latin + "</i>" + "</br>" + "a kind of " + cell.plant.type + "</br></br>")
-      
+
         if(cell.plant.notes !== '') $symbolInfo.append(cell.plant.notes + "</br> </br>" )
 
         $('<span/>', {
@@ -103,7 +101,7 @@ function showInfo (cellID) {
             click: (function(){ showSpeech(cell.plant) } ),
         }).appendTo($symbolInfo)
         .html("show narrative")
-      
+
         if(companions.length !== 0) {
             $symbolInfo.append("</br> </br> nearby companions: </br>")
             for(var i=0; i<companions.length; i++){
@@ -114,12 +112,12 @@ function showInfo (cellID) {
                     class: 'companion',
                     click: (function(){   $('.infopanel').toggle(), showInfo(this.id.substring(4)) } ),
                 }).html(companions[i].plant.name +"</br>")
-                .mouseenter(function(friend) { 
+                .mouseenter(function(friend) {
                     hideSpeech();
                     $(`#${this.id.substring(4)}`).css({'background-color': 'orange'});
                     })
-                .mouseleave(function() { 
-                    var color = zoneColors[cells[this.id.substring(4)].zone - 1];  
+                .mouseleave(function() {
+                    var color = zoneColors[cells[this.id.substring(4)].zone - 1];
                     $(`#${this.id.substring(4)}`).css({'background-color': color})
                     //$(`#${this.id.substring(4)}`).css({'background-color': 'lightblue'})
                     })
@@ -142,8 +140,7 @@ function showInfo (cellID) {
         })
         .appendTo($occupantInfo)
         .html(cell.occupant.name + "   " + "[<font color= "+ cell.occupant.color +">" + cell.occupant.symbol + "</font>]" + "<br>" +
-            "<p class='artext' lang='ar'>" + cell.occupant.arabic + "</p>" + "<br>" +
-            "</br>" + "a kind of " + cell.occupant.type + "</br></br>")
+            "a kind of " + cell.occupant.type + "</br></br>")
 
         $('<span/>', {
             class: 'companion',

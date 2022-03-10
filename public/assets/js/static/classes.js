@@ -1,7 +1,7 @@
 class Cell {
   constructor(id, zone, zoneName, substrate) {
     this.id = id;
-    this.zone = zone;    
+    this.zone = zone;
     this.zoneName = zoneName;
     this.substrate = substrate;
     this.plant ='';
@@ -9,10 +9,9 @@ class Cell {
 }
 
 class Plant {
-  constructor(name, arabic, type, soil, water, temp, personality, speech, symbol, color, flowering, flowercolor, companions) {
+  constructor(name, type, soil, water, temp, personality, speech, symbol, color, flowering, flowercolor, companions) {
   	this.id = '';
   	this.name = name;
-  	this.arabic = arabic;
   	this.type = type;
   	this.soil = soil;
   	this.water = water;
@@ -32,10 +31,9 @@ class Plant {
 }
 
 class Substrate {
-  constructor(name, arabic, type, personality, fertility, depth, symbol, color, speech) {
+  constructor(name, type, personality, fertility, depth, symbol, color, speech) {
   	this.id = '';
   	this.name = name;
-    this.arabic = arabic;
   	this.type = type;
   	this.personality = personality;
   	this.fertility = fertility;
@@ -50,20 +48,19 @@ class Substrate {
 }
 
 class Animal {
-  constructor(id, parentArray, x, y, name, arabic, zones, type, personality, symbol, color, speech) {
+  constructor(id, parentArray, x, y, name, zones, type, personality, symbol, color, speech) {
     this.id = id;
     this.parentArray = parentArray;
     this.x = x;
     this.y = y;
     this.name = name;
-    this.arabic = arabic;
-    this.zones = zones;    
+    this.zones = zones;
     this.type = type;
     this.personality = personality
     this.symbol = symbol;
     this.color = color;
     this.speech = [speech];
-    this.latin = '';    
+    this.latin = '';
     this.notes = '';
     this.narrative = '';
     this.thoughts = [];
@@ -76,7 +73,7 @@ class Speech {
     this.receiver = receiver;
     this.message = message;
     this.timestamp = timestamp;
-  }  
+  }
 }
 
 
@@ -85,7 +82,7 @@ class Thought {
     this.thinker = thinker;
     this.thought = thought;
     this.timestamp = timestamp;
-  }  
+  }
 }
 
 export {Cell, Plant, Substrate, Animal, Speech };

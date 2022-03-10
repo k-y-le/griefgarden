@@ -4,7 +4,6 @@ var substrateNames = [
 
 	{
 		'name': 'limestone',
-		'arabic': 'حجر الكلس',
 		'1': 'high',
 		'2': 'low',
 		'3': 'low',
@@ -21,13 +20,12 @@ var substrateNames = [
 
 	{
 		'name': 'dolomite',
-		'arabic': 'الدولميت',
 		'1': 'high',
 		'2': 'none',
 		'3': 'low',
 		'4': 'none',
 		'5': 'low',
-		'6': 'none',		
+		'6': 'none',
 		'type': 'rock',
 		'personality': 'wise',
 		'fertility': 0.05,
@@ -38,13 +36,12 @@ var substrateNames = [
 
 	{
 		'name':'terra rossa',
-		'arabic': 'التربة الحمراء',
 		'1': 'low',
 		'2': 'high',
 		'3': 'high',
 		'4': 'low',
 		'5': 'high',
-		'6': 'none',		
+		'6': 'none',
 		'type': 'soil',
 		'personality': 'flighty',
 		'fertility': 0.8,
@@ -55,7 +52,6 @@ var substrateNames = [
 
 	{
 		'name': 'compost',
-		'arabic': 'سماد',
 		'1': 'none',
 		'2': 'none',
 		'3': 'low',
@@ -72,7 +68,6 @@ var substrateNames = [
 
 	{
 		'name': 'clay',
-		'arabic': 'طين',
 		'1': 'low',
 		'2': 'med',
 		'3': 'low',
@@ -89,7 +84,6 @@ var substrateNames = [
 
 	{
 		'name': 'water',
-		'arabic': 'ماء',
 		'1': 'none',
 		'2': 'none',
 		'3': 'none',
@@ -106,7 +100,6 @@ var substrateNames = [
 
 	{
 		'name': 'water',
-		'arabic': 'ماء',
 		'1': 'none',
 		'2': 'none',
 		'3': 'none',

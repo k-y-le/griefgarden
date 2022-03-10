@@ -82,7 +82,7 @@ function moveFlock(flock) {
 				newCellNumber = nextY*xnum + nextX;
 
 				if(!cells[newCellNumber]) nextStep = true;  //can wander off
-				else if(!cells[newCellNumber].occupants && flock[i].zones.some(zone => cells[newCellNumber].zone === zone)) 
+				else if(!cells[newCellNumber].occupants && flock[i].zones.some(zone => cells[newCellNumber].zone === zone))
 					nextStep = true;
 
 			} while (nextStep === false)
@@ -127,7 +127,7 @@ async function goatEvent() {
 
 
 			var shade = goatShades[Math.floor(Math.random()*(goatShades.length))];
-			var goat = new Animal(i, goats, x, y, animalNames.goat.name, animalNames.goat.arabic, animalNames.goat.zones,
+			var goat = new Animal(i, goats, x, y, animalNames.goat.name, animalNames.goat.zones,
 				animalNames.goat.type, animalNames.goat.personality, animalNames.goat.symbol, shade, speech);
 
 			goats.push(goat);
@@ -171,7 +171,7 @@ function eachSecond() {
 		var wave = $( this ).html() === "~" ? '≈' : "~"
 		$( this ).html(wave);
 	})
-	
+
 	moveAnimals(animals);
 	for(var i=0; i<100; i++){
 		ambientSpeech();

@@ -37,7 +37,7 @@ function setDepth(zone, substrateType) {
     else if(depth < 0.8) level = 'med';
     else level = 'deep';
 
-    if(substrateType === 'rock') level = 'shallow'; 
+    if(substrateType === 'rock') level = 'shallow';
 
     return level;
 }
@@ -66,10 +66,10 @@ function distributeAnimals(){
                 var color = animal.shades[Math.floor(Math.random()*animal.shades.length)];
                 var speech = new Speech(animal.name, animal.name, animal.speech, Date.now);
 
-                var occupant = new Animal(animalID, animals, x, y, animal.name, animal.arabic, animal.zones, 
+                var occupant = new Animal(animalID, animals, x, y, animal.name, animal.zones,
                     animal.type, animal.personality, animal.symbol, color, speech);
                 occupant.latin = animal.latin;
-            
+
                 generateNarrative(occupant);
 
                 cells[randCellNumber].occupant = occupant;
@@ -82,7 +82,7 @@ function distributeAnimals(){
 
 function getFlowers(plant) {
     var today = new Date();
-    
+
     //month +1 as zero index
     var flowering = plant.flowering.some(x => x === today.getMonth() + 1 );
     return flowering;
@@ -111,7 +111,7 @@ function getSubstrate(zone) {
     //set substrate depth: random but as a function of zone
     var depth = setDepth(zone, substrateType.type);
 
-    var substrate = new Substrate(substrateType.name, substrateType.arabic, substrateType.type, substrateType.personality, 
+    var substrate = new Substrate(substrateType.name, substrateType.type, substrateType.personality,
         substrateType.fertility, depth, substrateType.symbol, substrateType.color, speech )
 
     return substrate;
@@ -127,7 +127,7 @@ function getPlant(zone) {
 
     var speech = new Speech(plantType, plantType, plantType.speech, Date.now());
 
-    var plant = new Plant(plantType.name, plantType.arabic, plantType.type, plantType.soil, plantType.water, plantType.temp, 
+    var plant = new Plant(plantType.name, plantType.type, plantType.soil, plantType.water, plantType.temp,
         plantType.personality, speech, plantType.symbol, plantType.color, plantType.flowering, plantType.flowercolor, plantType.companions)
 
     if(plantType.notes) plant.notes = plantType.notes;
@@ -160,7 +160,7 @@ var generateGrid = new Promise( function(resolve, reject){
                 plant = getPlant(zone);
                 symbol = plant.symbol;
                 divClass = divClass + " " + plant.name.replace(/\s/g, '');
-                
+
                 cell.plant = plant;
 
                 var flower = getFlowers(plant);
@@ -183,12 +183,12 @@ var generateGrid = new Promise( function(resolve, reject){
             'text-align' : 'center',
             }).html(symbol)
             .appendTo( '#container' );
-        
+
             cells[j*xnum + i] = cell;
         }
     }
     distributeAnimals();
-    resolve('generated grid!!'); 
+    resolve('generated grid!!');
 })
 
 getWeatherData.then(function(value) {

@@ -7,14 +7,15 @@ import { addConversation } from './narrative.js'
 
 function getMessageType (sender, receiver) {
 	//filters for message type from the sender type, and to the receiver type
-	var fromSender = getEntries(typeMapping, "senderType", sender);
-	var toReceiver = getEntries(fromSender, "receiverType", receiver);
-	var messageType = toReceiver[0].messageType;
+	var fromSender = getEntries(typeMapping, "senderType", sender); // gets the type mapping for the sender to all others
+	var toReceiver = getEntries(fromSender, "receiverType", receiver); // gets the array for just the sender/receiver combo
+	var messageType = toReceiver[0].messageType; // gets the type of message between these two
 
 	return messageType;
 }
 
 function getMessage (type, personality) {
+	// gets random message from array of possibilities by message type -> personality type
 	var messageArr = messageMapping[type][personality];
 	var message = messageArr[Math.floor(Math.random()*messageArr.length)];
 	return message;
