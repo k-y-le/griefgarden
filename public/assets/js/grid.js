@@ -3,7 +3,7 @@ import plantNames from './static/plants.js';
 import animalNames from './static/animals.js';
 import substrateNames from './static/substrates.js';
 import { xnum, ynum, squareSize } from './static/constants.js';
-import {Cell, Plant, Animal, Substrate, Speech} from './static/classes.js';
+import {Cell, Plant, Animal, Substrate, Speech, Memorial} from './static/classes.js';
 import { runMainLoop } from './animation.js';
 import { showInfo } from './info.js';
 import { generateNarrative } from './narrative.js';
@@ -156,6 +156,7 @@ var generateGrid = new Promise( function(resolve, reject){
             var divClass = "square zone" + zone + " " + cell.substrate.name.replace(/\s/g, '');
             generateNarrative(substrate);
 
+            // add plant to cell
             if(Math.random() < substrate.fertility && zone !== 5){
                 plant = getPlant(zone);
                 symbol = plant.symbol;

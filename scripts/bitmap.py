@@ -3,7 +3,8 @@ from PIL import Image
 import numpy as np
 import sys
 
-im = Image.open("./5-zone.bmp")
+# print("hello?")
+im = Image.open("./zones5.png")
 # print(im.format, im.size, im.mode)
 
 p = np.array(im)

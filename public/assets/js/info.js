@@ -1,5 +1,6 @@
 import { xnum, ynum } from './static/constants.js';
 import { zoneColors } from './static/zones.js';
+import {Cell, Plant, Animal, Substrate, Speech, Memorial} from './static/classes.js';
 import { cells } from './grid.js';
 import { goats } from './animation.js';
 
@@ -54,6 +55,16 @@ function hideSpeech () {
     $('.speechpanel').remove();
 }
 
+function addMemorial (cellID) {
+  console.log("called addmemorial");
+  var mem = new Memorial($('#memTitleInput').val(), $('#memAuthorInput').val(), $('#memDescInput').val());
+  cells[cellID].zone = 7;
+  cells[cellID].memorial = mem;
+
+  console.log(cells[cellID]);
+  $(`#${cellID}`).css({'background-color': '#CFD11A'});
+}
+
 function showInfo (cellID) {
     hideSpeech();
     var cell = cells[cellID];
@@ -62,6 +73,40 @@ function showInfo (cellID) {
     $('.infopanel').toggle()
 
     $('.infopanel').html("<p style='padding:20px'> in " + cell.zoneName + "...</p>")
+
+    // panel with information about memorial
+    var $memInfo = $('<div/>', {
+      class: 'infobox',
+    })
+    .appendTo('.infopanel')
+
+    if(cell.memorial && $('.infopanel').is(":visible")) {
+      // show the memorial title, author, description
+      var $symbolInfo =  $('<p/>', {
+          class: 'symbolinfo',
+      })
+      .appendTo($memInfo)
+      .html(cell.memorial.title + "   </br>[" + cell.memorial.author + "]" + "</br></br>");
+
+      $('<span/>', {
+          class: 'companion',
+          click: (function(){ showSpeech(cell.memorial) } ),
+      }).appendTo($symbolInfo)
+      .html("show description")
+    } else {
+      // input field to add a new memorial
+      var $symbolInfo =  $('<p/>', {
+          class: 'symbolinfo',
+          click: (function(){ addMemorial(cellID) } )
+      })
+      .appendTo($memInfo)
+      .html("<input id='memTitleInput' type='text' name='memTitle'></input></br></br>"
+      + "<input id='memAuthorInput' type='text' name='memAuthor'></input></br></br>"
+      + "<input id='memDescInput' type='text' name='memDesc'></input></br></br>"
+      + "<p><button class='addMemorial'>+</button></p>")
+    }
+
+
 
     var $substrateInfo =  $('<div/>', {
         class: 'infobox',

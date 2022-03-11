@@ -50,7 +50,7 @@ var animalNames = {
 	"beetle":{
 		"name": "longhorn beetle",
 		"zones": [1, 2, 3],
-		"number": 75,
+		"number": 7,
 		"latin": 'lamiinae',
 		"symbol": '̈́ ',
 		"shades": ["#333333", "#404040"],

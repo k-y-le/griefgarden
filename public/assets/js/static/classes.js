@@ -5,6 +5,7 @@ class Cell {
     this.zoneName = zoneName;
     this.substrate = substrate;
     this.plant ='';
+    this.memorial = '';
   }
 }
 
@@ -85,4 +86,12 @@ class Thought {
   }
 }
 
-export {Cell, Plant, Substrate, Animal, Speech };
+class Memorial {
+  constructor(title, author, narrative) {
+    this.title = title;
+    this.author = author;
+    this.narrative = narrative;
+  }
+}
+
+export {Cell, Plant, Substrate, Animal, Speech, Memorial };
