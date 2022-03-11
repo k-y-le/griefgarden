@@ -105,6 +105,9 @@ body {
 .companion:hover {
 	border-bottom: 1px dashed;
 }
+.addMemLink:hover {
+	border-bottom: 1px dashed;
+}
 
 .speechbox {
 	background-color: white;

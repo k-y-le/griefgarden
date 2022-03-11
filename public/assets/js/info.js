@@ -50,6 +50,31 @@ function showSpeech (agent) {
         $speechPanel.scrollTop($($speechPanel)[0].scrollHeight);
     }
 }
+// shows the input form for adding a new memorial
+function showMemorialInput (cellID) {
+    if ( $('.speechpanel').is(":visible") ){
+        hideSpeech();
+    }
+
+    else{
+        var $speechPanel =  $('<div/>', {
+            class: 'speechpanel',
+        })
+        .appendTo('#container')
+        .html("<input id='memTitleInput' type='text' name='memTitle'></input></br></br>"
+        + "<input id='memAuthorInput' type='text' name='memAuthor'></input></br></br>"
+        + "<input id='memDescInput' type='text' name='memDesc'></input></br></br>")
+
+        var $memAddButton = $('<button/>', {
+          class: 'addMemorial',
+          click: (function(){ addMemorial(cellID) } )
+        })
+        .appendTo($speechPanel)
+        .html("+");
+
+        $speechPanel.scrollTop($($speechPanel)[0].scrollHeight);
+    }
+}
 
 function hideSpeech () {
     $('.speechpanel').remove();
@@ -63,16 +88,18 @@ function addMemorial (cellID) {
 
   console.log(cells[cellID]);
   $(`#${cellID}`).css({'background-color': '#CFD11A'});
+  hideSpeech();
+  $('.infopanel').toggle();
 }
 
 function showInfo (cellID) {
     hideSpeech();
     var cell = cells[cellID];
     revertCompanions();
-    $('.infopanel').children().remove()
-    $('.infopanel').toggle()
+    $('.infopanel').children().remove();
+    $('.infopanel').toggle();
 
-    $('.infopanel').html("<p style='padding:20px'> in " + cell.zoneName + "...</p>")
+    $('.infopanel').html("<p style='padding:20px'> in " + cell.zoneName + "...</p>");
 
     // panel with information about memorial
     var $memInfo = $('<div/>', {
@@ -87,6 +114,7 @@ function showInfo (cellID) {
       })
       .appendTo($memInfo)
       .html(cell.memorial.title + "   </br>[" + cell.memorial.author + "]" + "</br></br>");
+      // TODO: add a little symbol to signify a memorial here!
 
       $('<span/>', {
           class: 'companion',
@@ -97,13 +125,19 @@ function showInfo (cellID) {
       // input field to add a new memorial
       var $symbolInfo =  $('<p/>', {
           class: 'symbolinfo',
-          click: (function(){ addMemorial(cellID) } )
+          click: (function(){ showMemorialInput(cellID) } )
       })
       .appendTo($memInfo)
-      .html("<input id='memTitleInput' type='text' name='memTitle'></input></br></br>"
-      + "<input id='memAuthorInput' type='text' name='memAuthor'></input></br></br>"
-      + "<input id='memDescInput' type='text' name='memDesc'></input></br></br>"
-      + "<p><button class='addMemorial'>+</button></p>")
+      .html("<span class='addMemLink'>add memorial</span>")
+      // var $symbolInfo =  $('<p/>', {
+      //     class: 'symbolinfo',
+      //     click: (function(){ addMemorial(cellID) } )
+      // })
+      // .appendTo($memInfo)
+      // .html("<input id='memTitleInput' type='text' name='memTitle'></input></br></br>"
+      // + "<input id='memAuthorInput' type='text' name='memAuthor'></input></br></br>"
+      // + "<input id='memDescInput' type='text' name='memDesc'></input></br></br>"
+      // + "<p><button class='addMemorial'>+</button></p>")
     }
 
 
