@@ -48,9 +48,10 @@ body {
 }
 
 .infopanel {
-	height: auto;
-	top: 20px;
-	right: 20px;
+	height: 95vh;
+	overflow: scroll;
+	top: 2.5vh;
+	right: 2.5vw;
 	width: 350px;
 	position: fixed;
 	background-color:  #e6e6e6;

@@ -24,7 +24,7 @@ function checkPlantComfort(cell, temperature) {
 		if(tempLevel === "hot") return "u know i'm a little hot right now"
 		else if(tempLevel === "med") return "is anyone else a bit chilly today?"
 		else if (tempLevel === 'cool') return "I am very! cold!"
-	else if(cell.plant.temp === "med") 
+	else if(cell.plant.temp === "med")
 		if(tempLevel === "hot") return "wowow it's hot I am h o t"
 		else if(tempLevel === "warm") return "it's pretty hot today! phew!"
 		else if (tempLevel === 'cool') return "oo, bit chilly today"
@@ -36,7 +36,7 @@ function checkPlantComfort(cell, temperature) {
 	if(cell.plant.soil === 'deep')
 		if(cell.substrate.depth === 'shallow' || cell.substrate.depth === 'med') return 'this soil is too shallow! ';
 
-	else if(cell.plant.soil === 'med')		
+	else if(cell.plant.soil === 'med')
 		if(cell.substrate.depth === 'shallow') return 'this soil is too shallow! ';
 
 	return false;
@@ -70,8 +70,8 @@ function haveThoughts(weatherData) {
 		thinker = randCell.substrate;
 		thought = expressComfort();
 		// var discomfort = checkComfort(randCell.substrate);
-		// if(!discomfort) thought = expressComfort();	
-		// else thought = expressDiscomfort(discomfort);		
+		// if(!discomfort) thought = expressComfort();
+		// else thought = expressDiscomfort(discomfort);
 	}
 
 	addThought(thinker, thought)

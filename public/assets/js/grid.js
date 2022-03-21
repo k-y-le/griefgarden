@@ -143,7 +143,7 @@ var generateGrid = new Promise( function(resolve, reject){
 
     for(var j=0; j<ynum; j++){
         for(var i=0; i<xnum; i++){
-            var zone = zones[j*xnum + i];
+            var zone = zones[j*xnum + i]; // TODO: change this to access database
             var plant;
             var substrate = getSubstrate(zone);
             var symbol = substrate.symbol;

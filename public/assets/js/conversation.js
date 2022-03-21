@@ -103,7 +103,7 @@ function printSpeech() {
 	var cellPos = $("#"+randCellNumber).position();
 
 	$('.speechbox').remove()
-	//put speech above cell
+	// pops up with thoughts from the inhabitant of the cell every once in a while
 	var $speechBox = $('<div/>', {
 			class: "speechbox",
 		})

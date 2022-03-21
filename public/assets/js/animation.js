@@ -167,6 +167,7 @@ function eachTenSeconds() {
 }
 
 function eachSecond() {
+  // adjusts the water cells to give appearance of movement
 	$('.water').each( function() {
 		var wave = $( this ).html() === "~" ? '≈' : "~"
 		$( this ).html(wave);
