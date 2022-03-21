@@ -61,9 +61,9 @@ function showMemorialInput (cellID) {
             class: 'speechpanel',
         })
         .appendTo('#container')
-        .html("<input id='memTitleInput' type='text' name='memTitle'></input></br></br>"
-        + "<input id='memAuthorInput' type='text' name='memAuthor'></input></br></br>"
-        + "<input id='memDescInput' type='text' name='memDesc'></input></br></br>")
+        .html("<label for='memTitleInput'>memorial title</label><br><input id='memTitleInput' type='text' name='memTitle'></input></br></br>"
+        + "<label for='memAuthorInput'>memorial author</label><br><input id='memAuthorInput' type='text' name='memAuthor'></input></br></br>"
+        + "<label for='memDescInput'>memorial description</label><br><input id='memDescInput' type='text' name='memDesc'></input></br></br>")
 
         var $memAddButton = $('<button/>', {
           class: 'addMemorial',
@@ -101,7 +101,7 @@ function showInfo (cellID) {
 
     $('.infopanel').html("<p style='padding:20px'> in " + cell.zoneName + "...</p>");
 
-    if (cell.zone != 6) {
+    if (cell.zone != 6 && !cell.plant) {
       // panel with information about memorial
       var $memInfo = $('<div/>', {
         class: 'infobox',
@@ -133,23 +133,23 @@ function showInfo (cellID) {
 
 
 
-    var $substrateInfo =  $('<div/>', {
-        class: 'infobox',
-    })
-    .appendTo('.infopanel')
-
-    var $symbolInfo =  $('<p/>', {
-        class: 'symbolinfo',
-    })
-    .appendTo($substrateInfo)
-    .html(cell.substrate.name + "   " + "[<font color= "+ cell.substrate.color +">" + cell.substrate.symbol + "</font>]" + "<br>" +
-        "a kind of " + cell.substrate.type + "</br> </br>")
-
-    $('<span/>', {
-        class: 'companion',
-        click: (function(){   showSpeech(cell.substrate) }),
-    }).appendTo($symbolInfo)
-    .html("show narrative")
+    // var $substrateInfo =  $('<div/>', {
+    //     class: 'infobox',
+    // })
+    // .appendTo('.infopanel')
+    //
+    // var $symbolInfo =  $('<p/>', {
+    //     class: 'symbolinfo',
+    // })
+    // .appendTo($substrateInfo)
+    // .html(cell.substrate.name + "   " + "[<font color= "+ cell.substrate.color +">" + cell.substrate.symbol + "</font>]" + "<br>" +
+    //     "a kind of " + cell.substrate.type + "</br> </br>")
+    //
+    // $('<span/>', {
+    //     class: 'companion',
+    //     click: (function(){   showSpeech(cell.substrate) }),
+    // }).appendTo($symbolInfo)
+    // .html("show narrative")
 
     if(cell.plant && $('.infopanel').is(":visible")){
         var companions = getCloseCompanions(cell);

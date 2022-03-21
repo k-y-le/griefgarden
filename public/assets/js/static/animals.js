@@ -2,7 +2,7 @@ var animalNames = {
 	"goat":{
 		"name": "damascus goat",
 		"zones": [1, 2, 3, 4, 5, 6],
-		"number": 30,
+		"number": 4,
 		"latin": 'capra aegagrus hircus',
 		"symbol": '羊',
 		"shades": ['#ffffcc', '#ffcc66', '#cc9900', '#664d00', '#993333'],
@@ -14,7 +14,7 @@ var animalNames = {
 	"cat":{
 		"name": "cat",
 		"zones": [1, 2, 3, 4, 5],
-		"number": 4,
+		"number": 2,
 		"latin": 'felis catus',
 		"symbol": '猫',
 		"shades": ['#ff9933', '#994d00', ' #ffdf80', '#8c8c8c', '#d9d9d9'],
@@ -26,7 +26,7 @@ var animalNames = {
 	"donkey":{
 		"name": "donkey",
 		"zones": [1, 2, 3, 4, 5],
-		"number": 4,
+		"number": 2,
 		"latin": 'equus africanus asinus',
 		"symbol": '驴',
 		"shades": ["#d9d9d9", "#8c8c8c", "#823b17", "#886633"],
@@ -38,7 +38,7 @@ var animalNames = {
 	"boar":{
 		"name": "wild boar",
 		"zones": [1, 2, 3, 4, 5, 6],
-		"number": 3,
+		"number": 1,
 		"latin": 'sus scrofa',
 		"symbol": '猪',
 		"shades": ["#999966", "#996633"],
@@ -50,7 +50,7 @@ var animalNames = {
 	"beetle":{
 		"name": "longhorn beetle",
 		"zones": [1, 2, 3],
-		"number": 7,
+		"number": 5,
 		"latin": 'lamiinae',
 		"symbol": '̈́ ',
 		"shades": ["#333333", "#404040"],
@@ -62,7 +62,7 @@ var animalNames = {
 	"bee":{
 		"name": "honey bee",
 		"zones": [1, 2, 3, 4, 5],
-		"number": 10,
+		"number": 3,
 		"latin": 'apis mellifica',
 		"symbol": '͚ ',
 		"shades": ["#ffbf00"],
@@ -74,7 +74,7 @@ var animalNames = {
 	"worm":{
 		"name": "earthworm",
 		"zones": [2, 3, 4],
-		"number": 10,
+		"number": 5,
 		"latin": 'eisenia fetida',
 		"symbol": '̫',
 		"shades": ["#ff8080", "#e4a281", "#dd713c", "#b31919"],
@@ -86,7 +86,7 @@ var animalNames = {
 	"nematode":{
 		"name": "nematode",
 		"zones": [2, 3, 4],
-		"number": 10,
+		"number": 3,
 		"latin": 'caenorhabditis elegans',
 		"symbol": '¸',
 		"shades": ["#9cabc9"],
@@ -110,7 +110,7 @@ var animalNames = {
 	"human":{
 		"name": "human",
 		"zones": [4, 5],
-		"number": 3,
+		"number": 1,
 		"latin": 'homo sapiens',
 		"symbol": '人',
 		"shades": ["#d2b48c", "#bf8040", "#b38600"],
@@ -122,7 +122,7 @@ var animalNames = {
 	"dog":{
 		"name": "dog",
 		"zones": [1, 2, 3, 5],
-		"number": 3,
+		"number": 2,
 		"latin": 'canis lupus familiaris',
 		"symbol": '狗',
 		"shades": ['#ff9933', '#994d00', ' #ffdf80', '#8c8c8c', '#d9d9d9'],
@@ -134,7 +134,7 @@ var animalNames = {
 	"frog":{
 		"name": "savigny's treefrog",
 		"zones": [6],
-		"number": 5,
+		"number": 3,
 		"latin": 'hyla savignyi',
 		"symbol": '͖ ',
 		"shades": ["#99cc00", "#73e600", "#66cc00"],
