@@ -6,7 +6,7 @@ var app = express()
 
 app.use(express.static(__dirname + "/public"));
 
-app.listen(3000, () => console.log('hey heyyyy'));
+app.listen(process.env.PORT || 3000, () => console.log('hey heyyyy'));
 
 // Insert
 var bodyParser = require("body-parser");
@@ -30,7 +30,7 @@ app.post('/addmem', function(req,res){
   //     });
   // });
 
-  
+
   // db.serialize(()=>{
   //   db.run('INSERT INTO emp(id,name) VALUES(?,?)', [req.body.id, req.body.name], function(err) {
   //     if (err) {
