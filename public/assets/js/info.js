@@ -65,9 +65,9 @@ function showMemorialInput (cellID) {
         })
         .appendTo('#container')
         .html("<form action='/addmem' method='POST'><fieldset><p id='errorText' style='color:red;display:none;'>please fill out all required fields to share your memorial</p>"
-        + "<label for='memTitleInput'>what are you mourning?</label></br><input id='memTitleInput' type='text' name='memTitle'></input></br></br>"
-        + "<label for='memAuthorInput'>what is your name (optional)</label></br><input id='memAuthorInput' type='text' name='memAuthor'></input></br></br>"
-        + "<label for='memDescInput'>why are you mourning? share a story, emotion, or message for your memorial.</label></br><input id='memDescInput' type='text' name='memDesc'></input></br></br>"
+        + "<label for='memTitleInput'>what are you mourning?</label></br><textarea id='memTitleInput' type='text' name='memTitle'></textarea></br></br>"
+        + "<label for='memAuthorInput'>what is your name (optional)</label></br><textarea id='memAuthorInput' type='text' name='memAuthor'></textarea></br></br>"
+        + "<label for='memDescInput'>why are you mourning? share a story, emotion, or message for your memorial.</label></br><textarea id='memDescInput' type='text' name='memDesc'></textarea></br></br>"
         + "<label for='memColorInput'>pick a color for your memorial</labl></br><input id='memColorInput' type='color' name='memColor'></input></br></br>"
         + "</fieldset></form>")
 

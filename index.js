@@ -1,20 +1,32 @@
 const express = require('express');
 var router = require('./router');
 var sqlite3 = require('sqlite3');
+var path = require('path');
 
 var app = express()
-
-app.use(express.static(__dirname + "/public"));
 
 app.listen(process.env.PORT || 3000, () => console.log('hey heyyyy'));
 
 // Insert
-var bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// var bodyParser = require("body-parser");
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 
-app.post('/addmem', function(req,res){
+// Root endpoint
+// var public = path.join(__dirname, 'public');
+app.use(express.static(__dirname + "/public"));
+
+app.get("/", (req, res, next) => {
+  console.log("get / called");
+  // res.sendFile(path.join(public, 'index.html'));
+});
+
+app.post('/addmem', (req, res, next) => {
   console.log(req.body);
+});
+
+// app.post('/addmem', (req, res, next) => {
+//   console.log(req.body);
   // add this new memorial to our database
   // var db = new sqlite3.Database('../mem.db', sqlite3.OPEN_READWRITE, (err) => {
   //     if (err) {
@@ -40,7 +52,9 @@ app.post('/addmem', function(req,res){
   //     res.send("New employee has been added into the database with ID = "+req.body.id+ " and Name = "+req.body.name);
   //   });
   // });
-});
+// });
+
+// app.use('/', express.static(public));
 
 var db = new sqlite3.Database('./mem.db', sqlite3.OPEN_READWRITE, (err) => {
 

@@ -28,16 +28,16 @@ body {
 }
 
 #about {
-	top: 250px;
+	top: 20vh;
 	width: 50vw;
-	height: 50vh;
+	height: 60vh;
 	min-width: 300px;
 	min-height: 300px;
 	overflow-y: scroll;
 	background-color:  #e6e6e6;
 	margin: 0 auto;
 	z-index: 10;
-	position: relative;
+	position: fixed;
 	font-size: 20px;
 	font-family: courier;
 }
@@ -75,6 +75,23 @@ body {
 	overflow-y: scroll;
 }
 
+#titlescreen {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 10;
+	font-size: 18px;
+	color: white;
+	padding: 20%;
+	font-family: courier;
+	overflow-wrap: normal;
+}
+
+.titletext {
+	width: 70%;
+}
+
 
 .messagebox {
 	position: relative;
@@ -108,6 +125,11 @@ body {
 }
 .addMemLink:hover {
 	border-bottom: 1px dashed;
+}
+.addMemorial {
+	font-family: courier;
+	margin-top: 5px;
+	margin-left: 2px;
 }
 
 .speechbox {
@@ -148,6 +170,6 @@ body {
 	background-color: #617dd1;
 }
 
-input {
+textarea {
 	width: 50%;
 }

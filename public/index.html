@@ -14,26 +14,36 @@
 <body>
 
 <div id="container">
-	<div class="abouticon" onclick="$('#about').toggle()"></div>
+	<div class="abouticon" onclick="$('#about').toggle()" href="#about"></div>
 	<div class="infopanel" style="display: none"> </div>
+  <div id="titlescreen" onclick="hideTitle();">
+    <h2>CLIMATE MEMORIAL</h2>
+    <p class="titletext">welcome to this digital climate memorial.</p>
+    <p class="titletext">please explore the memorials scattered about and add your own by clicking on a cell.</p>
+    <p class="titletext">remember to step into this (virtual) space respectfully so that we may share our grief in community with one another.</p>
+    <br><br>
+    click anywhere to enter
+  </div>
 	<div id="about" style="display: none">
 		<div class=abouttext>ABOUT THIS PROJECT:
 			<div onclick="$('#about').toggle()" style="float: right">x</div>
 		<br><br>
-		CLIMATE MEMORIAL [TODO: name] is a participatory digital climate graveyard project by Kyle Barnes and Raya Ward.
-
-    adapted from <a href="http://root.schloss-post.com/">Permaculture Network</a> by <a href="http://zhexi.info">Gary Zhexi Zhang</a> and <a href="http://agnescameron.info">Agnes Cameron</a>.
-
-		<br><br>
-		Currently, this is a work in progress: we hope you can enjoy the site as it develops.
-
-		<br><br>
-    Created by Kyle Barnes and Raya Ward.
+		CLIMATE MEMORIAL is an exploratory space, containing stories of plants, animals, and other memorialized climate grief.
+    Explore the canvas by clicking on cells to either learn more about a memorial or to add your own -- this can be a favorite tree, a beach, a friend, anything that you would like to memorialize.
+    <br><br>
+    Please be respectful of this space and of what others have shared as you enter so that we may share our grief in community.
+    <br><br>
+    CLIMATE MEMORIAL was created by Kyle Barnes and Raya Ward and adapted from <a href="http://root.schloss-post.com/">Permaculture Network</a> by <a href="http://zhexi.info">Gary Zhexi Zhang</a> and <a href="http://agnescameron.info">Agnes Cameron</a>.
 	</div>
 
 </div>
 
 <script type="module" src="assets/js/grid.js"></script>
+<script>
+function hideTitle() {
+  $('#titlescreen').hide();
+}
+</script>
 
 </body>
 
