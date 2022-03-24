@@ -1,25 +1,29 @@
 {
-  "name": "permaculture",
+  "name": "climate-memorial",
   "version": "1.0.0",
-  "description": "a simulation of sakiya",
+  "description": "a virtual space for collective mourning",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rokeby/permaculture.git"
+    "url": "https://github.com/k-y-le/permaculture"
   },
-  "author": "agnes cameron and gary zhexi zhang and sakiya",
+  "author": "kyle barnes and raya ward",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rokeby/permaculture/issues"
+    "url": "https://github.com/k-y-le/permaculture"
   },
-  "homepage": "https://github.com/rokeby/permaculture#readme",
+  "homepage": "https://github.com/k-y-le/permaculture",
   "dependencies": {
     "dark-sky-api": "^0.6.32",
     "darkskyjs": "^0.2.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "sqlite3": "^5.0.2"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }

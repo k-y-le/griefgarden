@@ -87,10 +87,12 @@ class Thought {
 }
 
 class Memorial {
-  constructor(title, author, narrative) {
+  constructor(title, author, narrative, color, symbol) {
     this.title = title;
     this.author = author;
     this.narrative = narrative;
+    this.color = color;
+    this.symbol = symbol;
   }
 }
 

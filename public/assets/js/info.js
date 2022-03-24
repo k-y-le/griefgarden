@@ -1,5 +1,5 @@
 import { xnum, ynum } from './static/constants.js';
-import { zoneColors } from './static/zones.js';
+import { zoneColors, zoneSymbols } from './static/zones.js';
 import {Cell, Plant, Animal, Substrate, Speech, Memorial} from './static/classes.js';
 import { cells } from './grid.js';
 import { goats } from './animation.js';
@@ -29,8 +29,11 @@ function getCloseCompanions(cell) {
 function revertCompanions() {
     for(var i=0; i<xnum; i++){
         for(var j=0; j<ynum; j++){
-            var color = zoneColors[cells[j*xnum + i].zone - 1];
-            $(`#${j*xnum + i}`).css({'background-color': color});
+          var color = zoneColors[cells[j*xnum + i].zone - 1];
+          if (cells[j*xnum + i].zone - 1 === 6) {
+            color = cells[j*xnum + i].memorial.color;
+          }
+          $(`#${j*xnum + i}`).css({'background-color': color});
         }
     }
 }
@@ -61,16 +64,20 @@ function showMemorialInput (cellID) {
             class: 'speechpanel',
         })
         .appendTo('#container')
-        .html("<label for='memTitleInput'>memorial title</label><br><input id='memTitleInput' type='text' name='memTitle'></input></br></br>"
-        + "<label for='memAuthorInput'>memorial author</label><br><input id='memAuthorInput' type='text' name='memAuthor'></input></br></br>"
-        + "<label for='memDescInput'>memorial description</label><br><input id='memDescInput' type='text' name='memDesc'></input></br></br>")
+        .html("<form action='/addmem' method='POST'><fieldset><p id='errorText' style='color:red;display:none;'>please fill out all required fields to share your memorial</p>"
+        + "<label for='memTitleInput'>what are you mourning?</label></br><input id='memTitleInput' type='text' name='memTitle'></input></br></br>"
+        + "<label for='memAuthorInput'>what is your name (optional)</label></br><input id='memAuthorInput' type='text' name='memAuthor'></input></br></br>"
+        + "<label for='memDescInput'>why are you mourning? share a story, emotion, or message for your memorial.</label></br><input id='memDescInput' type='text' name='memDesc'></input></br></br>"
+        + "<label for='memColorInput'>pick a color for your memorial</labl></br><input id='memColorInput' type='color' name='memColor'></input></br></br>"
+        + "</fieldset></form>")
 
         var $memAddButton = $('<button/>', {
           class: 'addMemorial',
+          type: 'submit',
           click: (function(){ addMemorial(cellID) } )
         })
         .appendTo($speechPanel)
-        .html("+");
+        .html("add memorial");
 
         $speechPanel.scrollTop($($speechPanel)[0].scrollHeight);
     }
@@ -81,15 +88,20 @@ function hideSpeech () {
 }
 
 function addMemorial (cellID) {
-  console.log("called addmemorial");
-  var mem = new Memorial($('#memTitleInput').val(), $('#memAuthorInput').val(), $('#memDescInput').val());
-  cells[cellID].zone = 7;
-  cells[cellID].memorial = mem;
+  if ($('#memTitleInput').val() && $('#memDescInput').val() && $('#memColorInput').val()) {
+    $('#errorText').hide();
+    var mem = new Memorial($('#memTitleInput').val(), $('#memAuthorInput').val(), $('#memDescInput').val(), $('#memColorInput').val(), zoneSymbols[cells[cellID].zone - 1]);
+    cells[cellID].zone = 7;
+    cells[cellID].memorial = mem;
 
-  console.log(cells[cellID]);
-  $(`#${cellID}`).css({'background-color': '#CFD11A'});
-  hideSpeech();
-  $('.infopanel').toggle();
+    console.log(cells[cellID]);
+    $(`#${cellID}`).css({'background-color': mem.color}).html("<span style='color:lightblue;mix-blend-mode:difference;'>" + mem.symbol + "</span>");
+    hideSpeech();
+    $('.infopanel').toggle();
+  } else {
+    console.log("didn't work! TODO: add a popup when this happens");
+    $('#errorText').show();
+  }
 }
 
 function showInfo (cellID) {
@@ -101,7 +113,7 @@ function showInfo (cellID) {
 
     $('.infopanel').html("<p style='padding:20px'> in " + cell.zoneName + "...</p>");
 
-    if (cell.zone != 6 && !cell.plant) {
+    if (cell.zone != 6) {
       // panel with information about memorial
       var $memInfo = $('<div/>', {
         class: 'infobox',
@@ -113,13 +125,15 @@ function showInfo (cellID) {
             class: 'symbolinfo',
         })
         .appendTo($memInfo)
-        .html(cell.memorial.title + "[<font color='#CFD11A'>ᗝ</font>]   </br><i>" + cell.memorial.author + "</i>" + "</br></br>");
+        .html(cell.memorial.title + "[<font color='" + cell.memorial.color + "'>" + cell.memorial.symbol + "</font>]   </br><i>"
+        + cell.memorial.author + "</i>" + "</br></br>"
+        + cell.memorial.narrative + "</br></br>");
 
-        $('<span/>', {
-            class: 'companion',
-            click: (function(){ showSpeech(cell.memorial) } ),
-        }).appendTo($symbolInfo)
-        .html("show description")
+        // $('<span/>', {
+        //     class: 'companion',
+        //     click: (function(){ showSpeech(cell.memorial) } ),
+        // }).appendTo($symbolInfo)
+        // .html("show description")
       } else {
         // input field to add a new memorial
         var $symbolInfo =  $('<p/>', {

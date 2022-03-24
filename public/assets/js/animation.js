@@ -158,7 +158,8 @@ function eachMinute() {
 
 function eachTenSeconds() {
 	//find some animalNames/plant's speech and print it
-	printSpeech();
+  // TODO change this to something else? some other popup every once in a while might be nice for interest
+	//printSpeech();
 	getWeatherData.then(function(weatherData) {
 		for(var j=0; j<100; j++){
 			haveThoughts(weatherData);
