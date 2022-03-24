@@ -2,9 +2,6 @@ import { addThought } from './narrative.js'
 import { cells } from './grid.js'
 import { xnum, ynum } from './static/constants.js'
 
-function checkCompanions(plant) {
-	return 'no friends here!'
-}
 
 function getTempLevel(temperature) {
 	var celsius = (temperature - 32)/1.8;
@@ -62,8 +59,7 @@ function haveThoughts(weatherData) {
 	if(randCell.plant){
 		thinker = randCell.plant;
 		var discomfort = checkPlantComfort(randCell, temperature);
-		if(!discomfort) thought = checkCompanions(randCell.plant);
-		else thought = expressDiscomfort(discomfort);
+		thought = expressDiscomfort(discomfort);
 	}
 
 	else {

@@ -10,7 +10,7 @@ class Cell {
 }
 
 class Plant {
-  constructor(name, type, soil, water, temp, personality, speech, symbol, color, flowering, flowercolor, companions) {
+  constructor(name, type, soil, water, temp, personality, speech, symbol, color) {
   	this.id = '';
   	this.name = name;
   	this.type = type;
@@ -21,13 +21,10 @@ class Plant {
   	this.speech = [speech];
   	this.symbol = symbol;
   	this.color = color;
-  	this.flowering = flowering;
-  	this.flowercolor = flowercolor;
   	this.notes = '';
-  	this.latin = '';
+  	this.author = '';
     this.narrative = '';
     this.thoughts = [];
-    this.companions = companions;
   }
 }
 

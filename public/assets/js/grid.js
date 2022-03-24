@@ -7,7 +7,6 @@ import {Cell, Plant, Animal, Substrate, Speech, Memorial} from './static/classes
 import { runMainLoop } from './animation.js';
 import { showInfo } from './info.js';
 import { generateNarrative } from './narrative.js';
-import { getWeatherData } from './darksky.js';
 
 var cells = new Array(xnum*ynum);
 var animals = [];
@@ -80,22 +79,6 @@ function distributeAnimals(){
     }
 }
 
-function getFlowers(plant) {
-    var today = new Date();
-
-    //month +1 as zero index
-    var flowering = plant.flowering.some(x => x === today.getMonth() + 1 );
-    return flowering;
-}
-
-function getFruits(plant) {
-    var today = new Date();
-
-    //month +1 as zero index
-    var fruiting = plant.fruiting.some(x => x === today.getMonth() + 1 );
-    return fruiting;
-}
-
 function getSubstrate(zone) {
     var entries = [];
 
@@ -128,10 +111,10 @@ function getPlant(zone) {
     var speech = new Speech(plantType, plantType, plantType.speech, Date.now());
 
     var plant = new Plant(plantType.name, plantType.type, plantType.soil, plantType.water, plantType.temp,
-        plantType.personality, speech, plantType.symbol, plantType.color, plantType.flowering, plantType.flowercolor, plantType.companions)
+        plantType.personality, speech, plantType.symbol, plantType.color)
 
     if(plantType.notes) plant.notes = plantType.notes;
-    if(plantType.latin) plant.latin = plantType.latin;
+    if(plantType.author) plant.author = plantType.author;
 
     return plant;
 }
@@ -164,9 +147,7 @@ var generateGrid = new Promise( function(resolve, reject){
 
                 cell.plant = plant;
 
-                var flower = getFlowers(plant);
-
-                color = flower ? plant.flowercolor : plant.color;
+                color = plant.color;
                 generateNarrative(plant);
             }
 
@@ -191,10 +172,6 @@ var generateGrid = new Promise( function(resolve, reject){
     distributeAnimals();
     resolve('generated grid!!');
 })
-
-getWeatherData.then(function(value) {
-    console.log(value);
-});
 
 generateGrid.then(function(value) {
     runMainLoop();

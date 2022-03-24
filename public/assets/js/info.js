@@ -4,40 +4,6 @@ import {Cell, Plant, Animal, Substrate, Speech, Memorial} from './static/classes
 import { cells } from './grid.js';
 import { goats } from './animation.js';
 
-function getCloseCompanions(cell) {
-    var y = Math.floor(cell.id/xnum);
-    var x = cell.id - y*xnum;
-    $(`#${cell.id}`).css({'background-color': 'orange'});
-    var companions = [];
-    for(var i=-4; i<5; i++){
-        for(var j=-4; j<5; j++){
-            if(cells[(y+j)*xnum+x+i]) {
-                if(cells[(y+j)*xnum+x+i].plant && cell.plant)  {
-                    if(cell.plant.companions.some(c => c === cells[(y+j)*xnum+x+i].plant.name))
-                        {
-                            //$(`#${(y+j)*xnum+x+i}`).css({'background-color': 'lightblue'});
-                            if(!(companions.some(d => d.plant.name === cells[(y+j)*xnum+x+i].plant.name)))
-                                companions.push(cells[(y+j)*xnum+x+i])
-                        }
-                }
-            }
-        }
-    }
-    return companions;
-}
-
-function revertCompanions() {
-    for(var i=0; i<xnum; i++){
-        for(var j=0; j<ynum; j++){
-          var color = zoneColors[cells[j*xnum + i].zone - 1];
-          if (cells[j*xnum + i].zone - 1 === 6) {
-            color = cells[j*xnum + i].memorial.color;
-          }
-          $(`#${j*xnum + i}`).css({'background-color': color});
-        }
-    }
-}
-
 function showSpeech (agent) {
     if ( $('.speechpanel').is(":visible") ){
         hideSpeech();
@@ -107,7 +73,6 @@ function addMemorial (cellID) {
 function showInfo (cellID) {
     hideSpeech();
     var cell = cells[cellID];
-    revertCompanions();
     $('.infopanel').children().remove();
     $('.infopanel').toggle();
 
@@ -166,7 +131,6 @@ function showInfo (cellID) {
     // .html("show narrative")
 
     if(cell.plant && $('.infopanel').is(":visible")){
-        var companions = getCloseCompanions(cell);
         var $plantInfo = $('<div/>', {
             class: 'infobox',
         }).appendTo('.infopanel')
@@ -176,7 +140,7 @@ function showInfo (cellID) {
         })
         .appendTo($plantInfo)
         .html(cell.plant.name + "   " + "[<font color= "+ cell.plant.color +">" + cell.plant.symbol + "</font>]" + "<br>" +
-            "<i>" + cell.plant.latin + "</i>" + "</br>" + "a kind of " + cell.plant.type + "</br></br>")
+            "<i>" + cell.plant.author + "</i>" + "</br>" + "a kind of " + cell.plant.type + "</br></br>")
 
         if(cell.plant.notes !== '') $symbolInfo.append(cell.plant.notes + "</br> </br>" )
 
@@ -185,30 +149,6 @@ function showInfo (cellID) {
             click: (function(){ showSpeech(cell.plant) } ),
         }).appendTo($symbolInfo)
         .html("show narrative")
-
-        if(companions.length !== 0) {
-            $symbolInfo.append("</br> </br> nearby companions: </br>")
-            for(var i=0; i<companions.length; i++){
-                var $companion = $('<span/>', {
-                    //this is soooo bad and hacky but you can't give things cell ids without all kinds
-                    //of bad stuff happening so this is the solution xoxo
-                    id: 'comp'+companions[i].id,
-                    class: 'companion',
-                    click: (function(){   $('.infopanel').toggle(), showInfo(this.id.substring(4)) } ),
-                }).html(companions[i].plant.name +"</br>")
-                .mouseenter(function(friend) {
-                    hideSpeech();
-                    $(`#${this.id.substring(4)}`).css({'background-color': 'orange'});
-                    })
-                .mouseleave(function() {
-                    var color = zoneColors[cells[this.id.substring(4)].zone - 1];
-                    $(`#${this.id.substring(4)}`).css({'background-color': color})
-                    //$(`#${this.id.substring(4)}`).css({'background-color': 'lightblue'})
-                    })
-
-                $symbolInfo.append($companion)
-            }
-        }
 
     }
 

@@ -18,8 +18,6 @@
   },
   "homepage": "https://github.com/k-y-le/permaculture",
   "dependencies": {
-    "dark-sky-api": "^0.6.32",
-    "darkskyjs": "^0.2.1",
     "express": "^4.17.3",
     "sqlite3": "^5.0.2"
   },
