@@ -1,8 +1,7 @@
 import { cells, animals } from './grid.js';
 import animalNames from './static/animals.js';
-import { Animal, Speech } from './static/classes.js';
+import { Animal } from './static/classes.js';
 import { xnum, ynum } from './static/constants.js'
-import { printSpeech, ambientSpeech, animalVisit } from './conversation.js';
 var goatZero = true;
 var goats = [];
 
@@ -55,7 +54,6 @@ function moveAnimals(animals) {
 			else{
 				cells[newCellNumber].occupant = animals[i];
 				$('#'+newCellNumber).html(animals[i].symbol).css({'color': animals[i].color})
-					if (Math.random() < 0.05) animalVisit(newCellNumber, animals); //1 in 20 chance of conversation
 			}
 		}
 	}
@@ -95,7 +93,6 @@ function moveFlock(flock) {
 			else{
 				cells[newCellNumber].occupant = flock[i];
 				$('#'+newCellNumber).html(flock[i].symbol).css({'color': flock[i].color})
-					if (Math.random() < 0.1) animalVisit(newCellNumber, flock); //1 in 10 chance of conversation
 			}
 		}
 	}
@@ -121,12 +118,10 @@ async function goatEvent() {
 			var y = goatY - Math.floor(Math.random()*5);
 			var cellNumber = y*xnum+x;
 
-   			var speech = new Speech(animalNames.goat, animalNames.goat, animalNames.goat.speech, Date.now());
-
 
 			var shade = goatShades[Math.floor(Math.random()*(goatShades.length))];
 			var goat = new Animal(i, goats, x, y, animalNames.goat.name, animalNames.goat.zones,
-				animalNames.goat.type, animalNames.goat.personality, animalNames.goat.symbol, shade, speech);
+				animalNames.goat.type, animalNames.goat.personality, animalNames.goat.symbol, shade);
 
 			goats.push(goat);
 			cells[cellNumber].occupant = goat;
@@ -157,7 +152,6 @@ function eachMinute() {
 function eachTenSeconds() {
 	//find some animalNames/plant's speech and print it
   // TODO change this to something else? some other popup every once in a while might be nice for interest
-	//printSpeech();
 }
 
 function eachSecond() {
@@ -168,9 +162,6 @@ function eachSecond() {
 	})
 
 	moveAnimals(animals);
-	for(var i=0; i<100; i++){
-		ambientSpeech();
-	}
 }
 
 //queries the time every second, runs regular events

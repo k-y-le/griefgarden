@@ -1,20 +1,18 @@
 import { xnum, ynum } from './static/constants.js';
 import { zoneColors, zoneSymbols } from './static/zones.js';
-import {Cell, Plant, Animal, Substrate, Speech, Memorial} from './static/classes.js';
+import {Cell, Plant, Animal, Substrate, Memorial} from './static/classes.js';
 import { cells } from './grid.js';
 import { goats } from './animation.js';
 
 function showSpeech (agent) {
     if ( $('.speechpanel').is(":visible") ){
         hideSpeech();
-    }
-
-    else{
+    } else {
         var $speechPanel =  $('<div/>', {
             class: 'speechpanel',
         })
         .appendTo('#container')
-        .html(agent.narrative)
+        .html(agent.narrative[Math.floor(Math.random() * agent.narrative.length)] + "</br></br><a href='" + agent.link + "'> read more </a></br>")
 
         $speechPanel.scrollTop($($speechPanel)[0].scrollHeight);
     }
@@ -56,7 +54,7 @@ function hideSpeech () {
 function addMemorial (cellID) {
   if ($('#memTitleInput').val() && $('#memDescInput').val() && $('#memColorInput').val()) {
     $('#errorText').hide();
-    var mem = new Memorial($('#memTitleInput').val(), $('#memAuthorInput').val(), $('#memDescInput').val(), $('#memColorInput').val(), zoneSymbols[cells[cellID].zone - 1]);
+    var mem = new Memorial($('#memTitleInput').val(), $('#memAuthorInput').val(), [$('#memDescInput').val()], $('#memColorInput').val(), zoneSymbols[cells[cellID].zone - 1]);
     cells[cellID].zone = 7;
     cells[cellID].memorial = mem;
 
@@ -140,7 +138,7 @@ function showInfo (cellID) {
         })
         .appendTo($plantInfo)
         .html(cell.plant.name + "   " + "[<font color= "+ cell.plant.color +">" + cell.plant.symbol + "</font>]" + "<br>" +
-            "<i>" + cell.plant.author + "</i>" + "</br>" + "a kind of " + cell.plant.type + "</br></br>")
+            "<i>" + cell.plant.author + "</i>" + "</br></br>")
 
         if(cell.plant.notes !== '') $symbolInfo.append(cell.plant.notes + "</br> </br>" )
 
@@ -148,7 +146,7 @@ function showInfo (cellID) {
             class: 'companion',
             click: (function(){ showSpeech(cell.plant) } ),
         }).appendTo($symbolInfo)
-        .html("show narrative")
+        .html("read memorial")
 
     }
 
@@ -170,7 +168,7 @@ function showInfo (cellID) {
             class: 'companion',
             click: (function(){   showSpeech(occupant) } ),
         }).appendTo($symbolInfo)
-        .html("show narrative")
+        .html("read memorial")
     }
 
 }

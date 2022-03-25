@@ -3,10 +3,9 @@ import plantNames from './static/plants.js';
 import animalNames from './static/animals.js';
 import substrateNames from './static/substrates.js';
 import { xnum, ynum, squareSize } from './static/constants.js';
-import {Cell, Plant, Animal, Substrate, Speech, Memorial} from './static/classes.js';
+import {Cell, Plant, Animal, Substrate, Memorial} from './static/classes.js';
 import { runMainLoop } from './animation.js';
 import { showInfo } from './info.js';
-import { generateNarrative } from './narrative.js';
 
 var cells = new Array(xnum*ynum);
 var animals = [];
@@ -63,13 +62,10 @@ function distributeAnimals(){
                 var x = randCellNumber - y*xnum;
 
                 var color = animal.shades[Math.floor(Math.random()*animal.shades.length)];
-                var speech = new Speech(animal.name, animal.name, animal.speech, Date.now);
 
                 var occupant = new Animal(animalID, animals, x, y, animal.name, animal.zones,
-                    animal.type, animal.personality, animal.symbol, color, speech);
+                    animal.type, animal.personality, animal.symbol, color);
                 occupant.latin = animal.latin;
-
-                generateNarrative(occupant);
 
                 cells[randCellNumber].occupant = occupant;
                 animals.push(occupant);
@@ -89,13 +85,11 @@ function getSubstrate(zone) {
 
     var substrateType = entries[Math.floor(Math.random()*(entries.length))];
 
-    var speech = new Speech(substrateType, substrateType, substrateType.speech, Date.now());
-
     //set substrate depth: random but as a function of zone
     var depth = setDepth(zone, substrateType.type);
 
     var substrate = new Substrate(substrateType.name, substrateType.type, substrateType.personality,
-        substrateType.fertility, depth, substrateType.symbol, substrateType.color, speech )
+        substrateType.fertility, depth, substrateType.symbol, substrateType.color )
 
     return substrate;
 }
@@ -108,13 +102,13 @@ function getPlant(zone) {
     var plantType = entries[Math.floor(Math.random()*(entries.length))];
     //here create new plant
 
-    var speech = new Speech(plantType, plantType, plantType.speech, Date.now());
 
     var plant = new Plant(plantType.name, plantType.type, plantType.soil, plantType.water, plantType.temp,
-        plantType.personality, speech, plantType.symbol, plantType.color)
+        plantType.personality, plantType.symbol, plantType.color, plantType.narrative)
 
     if(plantType.notes) plant.notes = plantType.notes;
     if(plantType.author) plant.author = plantType.author;
+    if(plantType.link) plant.link = plantType.link;
 
     return plant;
 }
@@ -137,7 +131,6 @@ var generateGrid = new Promise( function(resolve, reject){
             var cell = new Cell(id, zone, zoneName, substrate);
 
             var divClass = "square zone" + zone + " " + cell.substrate.name.replace(/\s/g, '');
-            generateNarrative(substrate);
 
             // add plant to cell
             if(Math.random() < substrate.fertility && zone !== 5){
@@ -148,7 +141,6 @@ var generateGrid = new Promise( function(resolve, reject){
                 cell.plant = plant;
 
                 color = plant.color;
-                generateNarrative(plant);
             }
 
             $('<div/>', {

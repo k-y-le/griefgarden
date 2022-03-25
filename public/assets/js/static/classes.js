@@ -10,7 +10,7 @@ class Cell {
 }
 
 class Plant {
-  constructor(name, type, soil, water, temp, personality, speech, symbol, color) {
+  constructor(name, type, soil, water, temp, personality, symbol, color, narrative) {
   	this.id = '';
   	this.name = name;
   	this.type = type;
@@ -18,17 +18,17 @@ class Plant {
   	this.water = water;
   	this.temp = temp;
   	this.personality = personality;
-  	this.speech = [speech];
   	this.symbol = symbol;
   	this.color = color;
   	this.notes = '';
   	this.author = '';
-    this.narrative = '';
+    this.narrative = narrative;
+    this.link = '';
   }
 }
 
 class Substrate {
-  constructor(name, type, personality, fertility, depth, symbol, color, speech) {
+  constructor(name, type, personality, fertility, depth, symbol, color) {
   	this.id = '';
   	this.name = name;
   	this.type = type;
@@ -37,14 +37,13 @@ class Substrate {
   	this.depth = depth;
   	this.symbol = symbol;
   	this.color = color;
-  	this.speech = [speech];
     this.narrative = '';
   }
 
 }
 
 class Animal {
-  constructor(id, parentArray, x, y, name, zones, type, personality, symbol, color, speech) {
+  constructor(id, parentArray, x, y, name, zones, type, personality, symbol, color) {
     this.id = id;
     this.parentArray = parentArray;
     this.x = x;
@@ -55,19 +54,9 @@ class Animal {
     this.personality = personality
     this.symbol = symbol;
     this.color = color;
-    this.speech = [speech];
     this.latin = '';
     this.notes = '';
     this.narrative = '';
-  }
-}
-
-class Speech {
-  constructor(sender, receiver, message, timestamp) {
-    this.sender = sender;
-    this.receiver = receiver;
-    this.message = message;
-    this.timestamp = timestamp;
   }
 }
 
@@ -81,4 +70,4 @@ class Memorial {
   }
 }
 
-export {Cell, Plant, Substrate, Animal, Speech, Memorial };
+export {Cell, Plant, Substrate, Animal, Memorial };

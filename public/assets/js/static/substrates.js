@@ -15,7 +15,6 @@ var substrateNames = [
 		'fertility': 0.02,
 		'symbol': '',
 		'color': '#ebebe0',
-		'speech': 'ee well',
 	},
 
 	{
@@ -31,7 +30,6 @@ var substrateNames = [
 		'fertility': 0.01,
 		'symbol': '',
 		'color': '#b3b3cc',
-		'speech': 'ee well',
 	},
 
 	{
@@ -47,7 +45,6 @@ var substrateNames = [
 		'fertility': 0.1,
 		'symbol': '',
 		'color':'#66001a',
-		'speech': 'ee well',
 	},
 
 	{
@@ -63,7 +60,6 @@ var substrateNames = [
 		'fertility': 0.2,
 		'symbol': '',
 		'color': '#3b2b2f',
-		'speech': 'ee well',
 	},
 
 	{
@@ -79,7 +75,6 @@ var substrateNames = [
 		'fertility': 0.05,
 		'symbol': '',
 		'color': '#e6e600',
-		'speech': 'ee well',
 	},
 
 	{
@@ -95,7 +90,6 @@ var substrateNames = [
 		'fertility': 0,
 		'symbol': '≈',
 		'color': '#99e6ff',
-		'speech': 'ee well',
 	},
 
 	{
@@ -111,7 +105,6 @@ var substrateNames = [
 		'fertility': 0,
 		'symbol': '~',
 		'color': '#99e6ef',
-		'speech': 'ee well',
 	},
 
 ]

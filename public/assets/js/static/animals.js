@@ -7,7 +7,6 @@ var animalNames = {
 		"symbol": '羊',
 		"shades": ['#ffffcc', '#ffcc66', '#cc9900', '#664d00', '#993333'],
 		"personality": "friendly",
-		"speech": 'hello hello',
 		"type": "grazer"
 	},
 
@@ -19,7 +18,6 @@ var animalNames = {
 		"symbol": '猫',
 		"shades": ['#ff9933', '#994d00', ' #ffdf80', '#8c8c8c', '#d9d9d9'],
 		"personality": "flighty",
-		"speech": 'oo!',
 		"type": "predator"
 	},
 
@@ -31,7 +29,6 @@ var animalNames = {
 		"symbol": '驴',
 		"shades": ["#d9d9d9", "#8c8c8c", "#823b17", "#886633"],
 		"personality": "wise",
-		"speech": 'mmmmmmm',
 		"type": "grazer"
 	},
 
@@ -43,7 +40,6 @@ var animalNames = {
 		"symbol": '猪',
 		"shades": ["#999966", "#996633"],
 		"personality": "sulky",
-		"speech": 'ho hum',
 		"type": "grazer"
 	},
 
@@ -55,7 +51,6 @@ var animalNames = {
 		"symbol": '̈́ ',
 		"shades": ["#333333", "#404040"],
 		"personality": "friendly",
-		"speech": 'zzt zzt',
 		"type": "grazer"
 	},
 
@@ -67,7 +62,6 @@ var animalNames = {
 		"symbol": '͚ ',
 		"shades": ["#ffbf00"],
 		"personality": "timid",
-		"speech": 'oo oo oo',
 		"type": "pollinator"
 	},
 
@@ -79,7 +73,6 @@ var animalNames = {
 		"symbol": '̫',
 		"shades": ["#ff8080", "#e4a281", "#dd713c", "#b31919"],
 		"personality": "funny",
-		"speech": 'wheeee',
 		"type": "parasite"
 	},
 
@@ -91,7 +84,6 @@ var animalNames = {
 		"symbol": '¸',
 		"shades": ["#9cabc9"],
 		"personality": "moody",
-		"speech": 'hmmmm',
 		"type": "parasite"
 	},
 
@@ -103,7 +95,6 @@ var animalNames = {
 	// 	"symbol": 'ࢱ',
 	// 	"shades": ["#93936c"],
 	// 	"personality": "mean",
-	// 	"speech": '',
 	// 	"type": ""
 	// },
 
@@ -115,7 +106,6 @@ var animalNames = {
 		"symbol": '人',
 		"shades": ["#d2b48c", "#bf8040", "#b38600"],
 		"personality": "friendly",
-		"speech": 'hi!',
 		"type": "predator"
 	},
 
@@ -127,7 +117,6 @@ var animalNames = {
 		"symbol": '狗',
 		"shades": ['#ff9933', '#994d00', ' #ffdf80', '#8c8c8c', '#d9d9d9'],
 		"personality": "chatty",
-		"speech": 'hellooo!! friends!!!',
 		"type": "predator"
 	},
 
@@ -139,7 +128,6 @@ var animalNames = {
 		"symbol": '͖ ',
 		"shades": ["#99cc00", "#73e600", "#66cc00"],
 		"personality": "timid",
-		"speech": 'bip bip',
 		"type": "amphibian"
 	},
 }
