@@ -24,7 +24,6 @@ class Plant {
   	this.notes = '';
   	this.author = '';
     this.narrative = '';
-    this.thoughts = [];
   }
 }
 
@@ -40,7 +39,6 @@ class Substrate {
   	this.color = color;
   	this.speech = [speech];
     this.narrative = '';
-    this.thoughts = [];
   }
 
 }
@@ -61,7 +59,6 @@ class Animal {
     this.latin = '';
     this.notes = '';
     this.narrative = '';
-    this.thoughts = [];
   }
 }
 
@@ -70,15 +67,6 @@ class Speech {
     this.sender = sender;
     this.receiver = receiver;
     this.message = message;
-    this.timestamp = timestamp;
-  }
-}
-
-
-class Thought {
-  constructor(thinker, thought, timestamp) {
-    this.thinker = thinker;
-    this.thought = thought;
     this.timestamp = timestamp;
   }
 }

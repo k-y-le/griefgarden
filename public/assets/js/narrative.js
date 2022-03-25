@@ -12,13 +12,8 @@ function addConversation(sender, receiver, messageType, responseType){
 	${sender.name} said "${sender.speech[sender.speech.length-1].message}", and ${receiver.name} replied "${receiver.speech[receiver.speech.length-1].message}". `;
 }
 
-function addThought(thinker, thought){
-	thinker.thoughts.push(thought);
-	thinker.narrative = thinker.narrative + `${thinker.name} thought to itself "${thinker.thoughts[thinker.thoughts.length-1]}". `;
-}
-
 function generateNarrative (agent) {
 	agent.narrative = `${agent.name} is a ${agent.personality} ${agent.type}. `;
 }
 
-export { addConversation, addThought, generateNarrative };
+export { addConversation, generateNarrative };
