@@ -10,12 +10,10 @@ class Cell {
 }
 
 class Plant {
-  constructor(name, type, soil, water, temp, personality, symbol, color, narrative) {
+  constructor(name, type, temp, personality, symbol, color, narrative) {
   	this.id = '';
   	this.name = name;
   	this.type = type;
-  	this.soil = soil;
-  	this.water = water;
   	this.temp = temp;
   	this.personality = personality;
   	this.symbol = symbol;

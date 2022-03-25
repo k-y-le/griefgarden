@@ -103,7 +103,7 @@ function getPlant(zone) {
     //here create new plant
 
 
-    var plant = new Plant(plantType.name, plantType.type, plantType.soil, plantType.water, plantType.temp,
+    var plant = new Plant(plantType.name, plantType.type, plantType.temp,
         plantType.personality, plantType.symbol, plantType.color, plantType.narrative)
 
     if(plantType.notes) plant.notes = plantType.notes;
