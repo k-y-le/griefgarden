@@ -44,33 +44,33 @@ function distributeAnimals(){
     var animalID = 0;
     for (var index in animalNames){
         var animal = animalNames[index]
-        if(animal.name !== "damascus goat"){
 
-            for(var i=0; i<animal.number; i++){
-                var cellPicked = false;
-                var randCellNumber = 0;
+        for(var i=0; i<animal.number; i++){
+            var cellPicked = false;
+            var randCellNumber = 0;
 
-                do{
-                    randCellNumber = Math.floor(Math.random()*ynum*xnum);
-                    if(!cells[randCellNumber].occupant && animal.zones.some(zone => cells[randCellNumber].zone === zone)) {
-                        cellPicked = true;
-                        //console.log("zone picking initial", i, animal.name, animal.zones, cells[randCellNumber].zone);
-                    }
-                } while (cellPicked === false);
+            do{
+                randCellNumber = Math.floor(Math.random()*ynum*xnum);
+                if(!cells[randCellNumber].occupant && animal.zones.some(zone => cells[randCellNumber].zone === zone)) {
+                    cellPicked = true;
+                    //console.log("zone picking initial", i, animal.name, animal.zones, cells[randCellNumber].zone);
+                }
+            } while (cellPicked === false);
 
-                var y = Math.floor(randCellNumber/xnum);
-                var x = randCellNumber - y*xnum;
+            var y = Math.floor(randCellNumber/xnum);
+            var x = randCellNumber - y*xnum;
 
-                var color = animal.shades[Math.floor(Math.random()*animal.shades.length)];
+            var color = animal.shades[Math.floor(Math.random()*animal.shades.length)];
 
-                var occupant = new Animal(animalID, animals, x, y, animal.name, animal.zones,
-                    animal.type, animal.personality, animal.symbol, color);
-                occupant.latin = animal.latin;
+            var occupant = new Animal(animalID, animals, x, y, animal.name, animal.zones,
+                animal.type, animal.personality, animal.symbol, color, animal.narrative);
+            occupant.author = animal.author;
+            if(animal.link) occupant.link = animal.link;
+            if(animal.quote) occupant.quote = animal.quote;
 
-                cells[randCellNumber].occupant = occupant;
-                animals.push(occupant);
-                animalID+=1;
-            }
+            cells[randCellNumber].occupant = occupant;
+            animals.push(occupant);
+            animalID+=1;
         }
     }
 }
@@ -109,6 +109,7 @@ function getPlant(zone) {
     if(plantType.notes) plant.notes = plantType.notes;
     if(plantType.author) plant.author = plantType.author;
     if(plantType.link) plant.link = plantType.link;
+    if(plantType.quote) plant.quote = plantType.quote;
 
     return plant;
 }

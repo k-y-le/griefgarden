@@ -22,6 +22,7 @@ class Plant {
   	this.author = '';
     this.narrative = narrative;
     this.link = '';
+    this.quote = '';
   }
 }
 
@@ -41,7 +42,7 @@ class Substrate {
 }
 
 class Animal {
-  constructor(id, parentArray, x, y, name, zones, type, personality, symbol, color) {
+  constructor(id, parentArray, x, y, name, zones, type, personality, symbol, color, narrative) {
     this.id = id;
     this.parentArray = parentArray;
     this.x = x;
@@ -52,9 +53,9 @@ class Animal {
     this.personality = personality
     this.symbol = symbol;
     this.color = color;
-    this.latin = '';
+    this.author = '';
     this.notes = '';
-    this.narrative = '';
+    this.narrative = narrative;
   }
 }
 

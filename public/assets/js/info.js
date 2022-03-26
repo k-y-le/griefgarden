@@ -2,7 +2,6 @@ import { xnum, ynum } from './static/constants.js';
 import { zoneColors, zoneSymbols } from './static/zones.js';
 import {Cell, Plant, Animal, Substrate, Memorial} from './static/classes.js';
 import { cells } from './grid.js';
-import { goats } from './animation.js';
 
 function showSpeech (agent) {
     if ( $('.speechpanel').is(":visible") ){
@@ -12,7 +11,7 @@ function showSpeech (agent) {
             class: 'speechpanel',
         })
         .appendTo('#container')
-        .html(agent.narrative[Math.floor(Math.random() * agent.narrative.length)] + "</br></br><a href='" + agent.link + "'> read more </a></br>")
+        .html(agent.narrative[Math.floor(Math.random() * agent.narrative.length)] + "</br></br><a target='_blank' href='" + agent.link + "'> read more </a></br>")
 
         $speechPanel.scrollTop($($speechPanel)[0].scrollHeight);
     }
@@ -63,7 +62,6 @@ function addMemorial (cellID) {
     hideSpeech();
     $('.infopanel').toggle();
   } else {
-    console.log("didn't work! TODO: add a popup when this happens");
     $('#errorText').show();
   }
 }
@@ -162,7 +160,7 @@ function showInfo (cellID) {
         })
         .appendTo($occupantInfo)
         .html(cell.occupant.name + "   " + "[<font color= "+ cell.occupant.color +">" + cell.occupant.symbol + "</font>]" + "<br>" +
-            "a kind of " + cell.occupant.type + "</br></br>")
+             "<i>" + cell.occupant.author + "</i>" + "</br></br>")
 
         $('<span/>', {
             class: 'companion',

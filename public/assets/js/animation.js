@@ -2,8 +2,6 @@ import { cells, animals } from './grid.js';
 import animalNames from './static/animals.js';
 import { Animal } from './static/classes.js';
 import { xnum, ynum } from './static/constants.js'
-var goatZero = true;
-var goats = [];
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -59,99 +57,49 @@ function moveAnimals(animals) {
 	}
 }
 
-//moves animals (e.g. goats) as a flock
-function moveFlock(flock) {
-
-	if(flock.every(element => element === undefined)) goatZero = true;
-
-	for(var i=0; i<flock.length; i++){
-		if(flock[i]){
-			regrowCell(flock[i].y*xnum+flock[i].x);
-
-			var nextX, nextY, newCellNumber;
-			var nextStep = false;
-
-			do {
-				nextX = flock[i].x + Math.floor(Math.random()*3)-1;
-				nextY = flock[i].y + Math.floor(Math.random()*2)-1;
-
-				newCellNumber = nextY*xnum + nextX;
-
-				if(!cells[newCellNumber]) nextStep = true;  //can wander off
-				else if(!cells[newCellNumber].occupants && flock[i].zones.some(zone => cells[newCellNumber].zone === zone))
-					nextStep = true;
-
-			} while (nextStep === false)
-
-			flock[i].x = nextX;
-			flock[i].y = nextY;
-
-			//if goat goes offscreen
-			if(newCellNumber > ynum*xnum || newCellNumber < 0)
-				delete flock[i];
-
-			else{
-				cells[newCellNumber].occupant = flock[i];
-				$('#'+newCellNumber).html(flock[i].symbol).css({'color': flock[i].color})
-			}
-		}
-	}
-}
-
-async function goatEvent() {
-	goatZero = false;
-	goats = [];
-	console.log('goat time');
-	//select a spawn cell from the bottom row
-	var cellNumber = (ynum-1)*xnum + Math.floor(Math.random()*90);
-	var spawnCell = cells[cellNumber];
-
-	var numGoats = Math.round(Math.random()*20)+10;
-	var goatX = cellNumber - (ynum-1)*xnum;
-	var goatY = ynum-1;
-
-	//populate cells within 20 squares of the spawn cell with goats
-	var goatShades = animalNames.goat.shades;
-
-	for(var i=0; i<numGoats; i++){
-			var x = goatX + Math.floor(Math.random()*15);
-			var y = goatY - Math.floor(Math.random()*5);
-			var cellNumber = y*xnum+x;
-
-
-			var shade = goatShades[Math.floor(Math.random()*(goatShades.length))];
-			var goat = new Animal(i, goats, x, y, animalNames.goat.name, animalNames.goat.zones,
-				animalNames.goat.type, animalNames.goat.personality, animalNames.goat.symbol, shade);
-
-			goats.push(goat);
-			cells[cellNumber].occupant = goat;
-
-			$('#'+cellNumber).css({
-				'color': shade
-			}).html(animalNames.goat.symbol)
-	}
-
-	do{
-		moveFlock(goats);
-		await sleep(1000);
-	} while(goatZero === false);
-}
-
 function reset() {
 	console.log('gd morning friends');
+}
+
+function eachMinute() {
+  console.log('a minute has passed woo');
 }
 
 function eachHour() {
 	console.log('an hour!!')
 }
 
-function eachMinute() {
-	if(goatZero) goatEvent();
-}
-
 function eachTenSeconds() {
 	//find some animalNames/plant's speech and print it
-  // TODO change this to something else? some other popup every once in a while might be nice for interest
+  printQuote();
+}
+
+function printQuote() {
+	var message, symbol;
+  // get a random cell with a plant on it
+	var randCellNumber = Math.floor(Math.random()*ynum*xnum);
+  while (!cells[randCellNumber].plant && !cells[randCellNumber].occupant) {
+    randCellNumber = Math.floor(Math.random()*ynum*xnum);
+  }
+
+	var randCell = cells[randCellNumber];
+
+	var cellPos = $("#"+randCellNumber).position();
+
+	$('.speechbox').remove()
+  if (cells[randCellNumber].occupant) var quoteHTML = '['+randCell.occupant.symbol+'] '+randCell.occupant.quote
+  else var quoteHTML = '['+randCell.plant.symbol+'] '+randCell.plant.quote
+	//put speech above cell
+	var $speechBox = $('<div/>', {
+			class: "speechbox",
+		})
+		.css({
+			left: cellPos.left,
+			top: cellPos.top-20,
+		})
+		.html(quoteHTML)
+		.appendTo('#container')
+
 }
 
 function eachSecond() {
@@ -192,4 +140,4 @@ async function runMainLoop(){
 	}
 }
 
-export {goats, goatEvent, runMainLoop};
+export {runMainLoop};
