@@ -70,13 +70,16 @@ function eachHour() {
 }
 
 function eachTenSeconds() {
+	$('.speechbox').remove()
 	//find some animalNames/plant's speech and print it
-  printQuote();
+  for (var i = 0; i < 7; i++) {
+    printQuote();
+  }
 }
 
 function printQuote() {
 	var message, symbol;
-  // get a random cell with a plant on it
+  // get random cell for quote
 	var randCellNumber = Math.floor(Math.random()*ynum*xnum);
   while (!cells[randCellNumber].plant && !cells[randCellNumber].occupant) {
     randCellNumber = Math.floor(Math.random()*ynum*xnum);
@@ -86,7 +89,6 @@ function printQuote() {
 
 	var cellPos = $("#"+randCellNumber).position();
 
-	$('.speechbox').remove()
   if (cells[randCellNumber].occupant) var quoteHTML = '['+randCell.occupant.symbol+'] '+randCell.occupant.quote
   else var quoteHTML = '['+randCell.plant.symbol+'] '+randCell.plant.quote
 	//put speech above cell
