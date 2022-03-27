@@ -60,7 +60,8 @@ class Animal {
 }
 
 class Memorial {
-  constructor(title, author, narrative, color, symbol) {
+  constructor(id, title, author, narrative, color, symbol) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.narrative = narrative;

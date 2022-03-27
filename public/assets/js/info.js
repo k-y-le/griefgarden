@@ -27,20 +27,21 @@ function showMemorialInput (cellID) {
             class: 'speechpanel',
         })
         .appendTo('#container')
-        .html("<form action='/addmem' method='POST'><fieldset><p id='errorText' style='color:red;display:none;'>please fill out all required fields to share your memorial</p>"
+        .html("<form action='addmem' method='POST'><p id='errorText' style='color:red;display:none;'>please fill out all required fields to share your memorial</p>"
         + "<label for='memTitleInput'>what are you mourning?</label></br><textarea id='memTitleInput' type='text' name='memTitle'></textarea></br></br>"
         + "<label for='memAuthorInput'>what is your name (optional)</label></br><textarea id='memAuthorInput' type='text' name='memAuthor'></textarea></br></br>"
         + "<label for='memDescInput'>why are you mourning? share a story, emotion, or message for your memorial.</label></br><textarea id='memDescInput' type='text' name='memDesc'></textarea></br></br>"
         + "<label for='memColorInput'>pick a color for your memorial</labl></br><input id='memColorInput' type='color' name='memColor'></input></br></br>"
-        + "</fieldset></form>")
+        + "<button id='addMemorial' type='button'>add memorial</button></form>")
 
-        var $memAddButton = $('<button/>', {
-          class: 'addMemorial',
-          type: 'submit',
-          click: (function(){ addMemorial(cellID) } )
-        })
-        .appendTo($speechPanel)
-        .html("add memorial");
+        $('#addMemorial').click(function(){addMemorial(cellID)});
+        // var $memAddButton = $('<button/>', {
+        //   class: 'addMemorial',
+        //   type: 'submit',
+        //   click: (function(){ addMemorial(cellID) } )
+        // })
+        // .appendTo($speechPanel)
+        // .html("add memorial");
 
         $speechPanel.scrollTop($($speechPanel)[0].scrollHeight);
     }
@@ -53,7 +54,7 @@ function hideSpeech () {
 function addMemorial (cellID) {
   if ($('#memTitleInput').val() && $('#memDescInput').val() && $('#memColorInput').val()) {
     $('#errorText').hide();
-    var mem = new Memorial($('#memTitleInput').val(), $('#memAuthorInput').val(), [$('#memDescInput').val()], $('#memColorInput').val(), zoneSymbols[cells[cellID].zone - 1]);
+    var mem = new Memorial(cellID, $('#memTitleInput').val(), $('#memAuthorInput').val(), [$('#memDescInput').val()], $('#memColorInput').val(), zoneSymbols[cells[cellID].zone - 1]);
     cells[cellID].zone = 7;
     cells[cellID].memorial = mem;
 
@@ -61,6 +62,10 @@ function addMemorial (cellID) {
     $(`#${cellID}`).css({'background-color': mem.color}).html("<span style='color:lightblue;mix-blend-mode:difference;'>" + mem.symbol + "</span>");
     hideSpeech();
     $('.infopanel').toggle();
+
+    $.post("/addmem", mem, function(data, status){
+      console.log("addmem post called -- do stuff in index.js");
+    });
   } else {
     $('#errorText').show();
   }

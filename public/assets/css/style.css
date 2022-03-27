@@ -126,7 +126,7 @@ body {
 .addMemLink:hover {
 	border-bottom: 1px dashed;
 }
-.addMemorial {
+#addMemorial {
 	font-family: courier;
 	margin-top: 5px;
 	margin-left: 2px;
