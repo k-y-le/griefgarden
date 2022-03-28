@@ -45,10 +45,8 @@ function createTables(newdb) {
 }
 
 function runQueries(db) {
-  console.log("in runqueries()")
     db.all(`
     select * from memorial`, (err, rows) => {
-      console.log(rows);
         rows.forEach(row => {
             console.log(row.id + "\t" +
             row.title + "\t" +
@@ -88,7 +86,6 @@ app.post('/addmem', function(req, res){
 });
 
 app.get('/getmem', function(req, res){
-  console.log("get all memories call");
   var db = new sqlite3.Database('./mem.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
       console.log(err.code);
@@ -101,9 +98,6 @@ app.get('/getmem', function(req, res){
         console.log(err.code);
         return;
       }
-      rows.forEach((row) => {
-        console.log(row);
-      });
       res.send(rows);
     });
   });

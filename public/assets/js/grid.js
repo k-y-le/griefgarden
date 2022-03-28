@@ -1,4 +1,4 @@
-import { zones, zoneNames, zoneSymbols } from './static/zones.js';
+import { zones, zoneNames, zoneColors, zoneSymbols } from './static/zones.js';
 import plantNames from './static/plants.js';
 import animalNames from './static/animals.js';
 import substrateNames from './static/substrates.js';
@@ -121,7 +121,7 @@ var generateGrid = new Promise( function(resolve, reject){
 
     for(var j=0; j<ynum; j++){
         for(var i=0; i<xnum; i++){
-            var zone = zones[j*xnum + i]; // TODO: change this to access database
+            var zone = zones[j*xnum + i];
             var plant;
             var substrate = getSubstrate(zone);
             var symbol = substrate.symbol;
@@ -162,7 +162,6 @@ var generateGrid = new Promise( function(resolve, reject){
             cells[j*xnum + i] = cell;
         }
     }
-    console.log("get call!");
     $.get('/getmem', function(data, status){
       data.forEach((mem) => {
         var newMem = new Memorial(mem.id, mem.title, mem.author, [mem.desc], mem.color, zoneSymbols[cells[mem.id].zone - 1]);
@@ -170,7 +169,6 @@ var generateGrid = new Promise( function(resolve, reject){
         cells[mem.id].memorial = newMem;
         // make the memorial show up now!
         $(`#${newMem.id}`).css({'background-color': newMem.color}).html("<span style='color:lightblue;mix-blend-mode:difference;'>" + newMem.symbol + "</span>");
-        console.log(cells[mem.id]);
       });
     });
     distributeAnimals();

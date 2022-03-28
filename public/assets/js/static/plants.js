@@ -13,7 +13,7 @@ var plantNames = [
 		'personality': 'wise',
 		'narrative': ['It’s incredibly painful to watch loss and destruction being layered on top of a system already built on top of so much suffering and violence. But I also know that this is a pain and complexity that desperately needs to be felt and truly examined so we can learn some very important lessons.', 'But beyond infrastructure (and in fact, in order to find the political will necessary to build it), we are also going to have to examine our hearts and our history so we can greet the grief and loss of these times in a way that produces genuine wisdom and empathy.', 'I’m thinking of my neighbors and friends who are afraid and maybe even losing their homes tonight, and for all the suffering being generated. May we learn quickly, and may we be kind and supportive of each other. May we remember our fundamental interdependence and the shared ancestry that binds us across time and space as one human family — an indivisible part of the earth that sustains us. May we remember that we are not separate from nature — we are nature, learning in real-time what it means to be alive. Together.'],
 		'quote': '"desperately needs to be felt"',
-		'symbol': 'ӂ',
+		'symbol': '»',
 		'color': '#009933',
 	},
 
@@ -31,7 +31,7 @@ var plantNames = [
 		'personality': 'wise',
 		'narrative': ['“It’s the new normal,” I think, as a beloved pear tree, halfdrowned, loses its grip on the earth and falls over.', 'The apocalypse is always usefully cast into the future—unless you happen to live in Mauritius, or Jamaica, or the many other perilous spots.', 'In the end, the only thing that could create the necessary traction in our minds was the intimate loss of the things we loved.'],
 		'quote': '"intimate loss"',
-		'symbol': 'Ѭ',
+		'symbol': '÷',
 		'color': '#b30000',
 	},
 
@@ -49,7 +49,7 @@ var plantNames = [
 		'personality': 'mean',
 		'narrative': ['Ultra-wealthy Malibu is burning. Rural, retirement community-laden Paradise is burning. Santa Rosa burned. Ventura burned. It’s all burning. </br></br> Meanwhile, my newborn took his first nap on my chest, held his head up improbably, and smiled in his sleep.', 'My sons are going to live in cities on fire, in nations led by men who don’t care, and they are going to have to learn to help tackle the problem, as we are. If I can in any way help them tap into that capacity that I felt last night, if they can help me, and if others can—and if that relation can help topple power in denial—then maybe we can sustain this pre-apocalypse, whether it takes another blue wave or nine, a political revolution, mass psilocybin hallucinations, or something else. If we can relate that goodness where applicable and confront power whenever possible, my sons may not have to live their adult lives in omnipresent fear of fires.', 'So it is certain that my kids are going to come of age in a world that is rapidly warming and rapidly changing—that is literally more on fire—but also in a country that in a given year may or may not be governed by politicians in stark denial of those changes.'],
 		'quote': '"It\'s all burning."',
-		'symbol': '⊰',
+		'symbol': '⁂',
 		'color': '#739900',
 	},
 
@@ -67,7 +67,7 @@ var plantNames = [
 		'personality': 'spiky',
 		'narrative': ['The only choice we really have is to rethink everything.', 'I’m tired all the time. I never properly congratulate myself. I am always overextended, and only very rarely am I able to give my full attention to whatever it is I’m doing at the moment. I say yes way too often. I always feel behind.', 'I’m working right up to, and occasionally over, my breaking point. And I’m doing it by choice. </br></br> Somehow, for us to achieve the world we need – one that prioritises care over production –  we’ve got to break out of this way of thinking.'],
 		'quote': '"rethink everything"',
-		'symbol': 'ღ',
+		'symbol': '⁜',
 		'color': '#8cb319',
 	},
 
@@ -85,7 +85,7 @@ var plantNames = [
 		'personality': 'flighty',
 		'narrative': ['As the climate breaks down, we remain caught between both legacies of Wounded Knee—genocide and freedom—the horror of the massacre and the dream of the massacred.', 'Flooded and mucky back roads cut families off from medicine, food, water, and outside assistance. Water lines broke all over the reservation.', 'Here on the hill: the victims of genocide. Down below: the survivors. Here: the final apocalypse of the American frontier. There: the carnage of climate change. One cataclysm hatched atop another.'],
 		'quote': '"we remain caught"',
-		'symbol': 'ڗ',
+		'symbol': '₴',
 		'color': '#33cc33',
 	},
 
@@ -103,7 +103,7 @@ var plantNames = [
 		'personality': 'friendly',
 		'narrative': ['I remembered the meteorologists explaining how hurricanes start off the coast of Africa and gather strength as they cross the Atlantic, following almost exactly the route of slave ships.', 'Again, I thought of Emmett and his open casket, as I watched New Orleans and the coasts turn into open graves.', 'The climate crisis is covered in the fingerprints of slavery and Jim Crow and colonialism and genocide and patriarchy. It’s what happens when large swaths of people are not only systematically “left out,” but forced to be their own gravediggers and pallbearers. I can’t help but see how those same layers complicate and exacerbate the crisis. Who is saved and who is abandoned. Whose bodies litter the road to the “greater good.”'],
 		'quote': '"open graves"',
-		'symbol': 'ڗ',
+		'symbol': 'Ψ',
 		'color': '#339933',
 	},
 
@@ -121,7 +121,7 @@ var plantNames = [
 		'personality': 'wise',
 		'narrative': ['I was full of guilt and anxiety and anger and fear about a future filled with loss and death. I began to draw my own elliptical lines through the ethics of the climate crisis. I turned off the heat in my house, even during the bitter Utah winters. I was late everywhere, determined to take a bus to another bus to a train. I obsessed over plastic bags and Styrofoam plates, and insisted on bringing my own plate to a local sandwich shop. I carried my garbage around for a week and roped my friends into doing so, too, each of us hauling a stinking reminder of our consumption from class to class, clearing rooms as we went. I joined a direct action climate justice group; I planned blockades of city streets and got arrested.', 'Eventually, I left it all. I retreated with my girlfriend to a cabin in upstate New York: no email, no news, no crises. I knew what I wanted. I wanted a world that would last through the century. I wanted a world where my existence didn’t mean the end for others. But, barring that, I really wanted just one thing: To grieve. To say, This is unbearable, and to have people to try to bear it with.', 'Maybe we need a word for a difficult truth: that when the world is ending, our health depends on closing ourselves off to awareness of this fact. Where you choose to draw your boundaries is arbitrary, not rational. If you draw them wide—if you include trees and refugees and animals and whole nations—you will be sick from overwhelm and will be seen as crazy. But if you draw them narrowly, you’ll suppress more and admire yourself less—which is its own sort of sickness.'],
 		'quote': '"I really wanted just one thing: To grieve"',
-		'symbol': 'क',
+		'symbol': '↯',
 		'color': '#339933',
 	},
 
@@ -139,7 +139,7 @@ var plantNames = [
 		'personality': 'pithy',
 		'narrative': ['But after the wildfires of the past few years, we know friends who have been left with only what was in their car when they escaped. This is no stretch of the imagination for us, or for our children. The things we bring with us, and the things left behind.', 'I’ve realized that part of our process of climate adaptation is this evaluation of our beloved items, our memories, what we hold dear. What will we save, and what will we lose. This is a component of adapting to our new riskier world.', 'I’ll bring some memories from this fire, too. I’ll remember the friends who texted through the night to make sure we evacuated safely. I’ll remember the dozens of people who offered us places to stay and warm meals. I’ll remember that when we returned home, the morning after the evacuations lifted, the owner of our local grocery store greeted me with a warm cup of coffee at the bakery counter of his shop. We were living in a community with no power, wandering through a haze of smoke trying to see the end of the current disaster, and there were tremendous acts of kindness in our everyday interactions.', 'Years from now, I want to tell my children how fall used to be my favorite time of the year, before the fires of 2017 came and changed our relationship with the wind.'],
 		'quote': '"I\'ll remember"',
-		'symbol': 'Ӵ',
+		'symbol': '∮',
 		'color': '#33cc33',
 	},
 
@@ -158,7 +158,7 @@ var plantNames = [
 		'personality': 'sweet',
 		'narrative': ['For my peers, our entire adult lives have been defined by this proximity to disaster, which turned the annual fire season into a full-time experience. When we are not actively running from an incoming fire, we are anxiously laughing about when the “Big One” will hit, or wondering when the Ace Hardware down the street will re-stock their air filters.', 'First responders and survivors I’ve met since the Camp Fire have told me that the nightmares that keep them up at night often involve the elderly who had no one to care for them, no one to sweep them away before the fires overtook their trailer parks and family homes. It’s an anxiety I similarly cannot shake, having grandparents who—despite the many, many disasters that have befallen them—refuse to move.', 'This time next year, someone I love might have lost their home. Friends could die, my family flee the only place they’ve ever lived. But in this new world around me, I’m no longer afraid. All I want to do now is fucking fight for it.'],
 		'quote': '"All I want to do now is fucking fight"',
-		'symbol': '&',
+		'symbol': '⊛',
 		'color': '#809933',
 	},
 
@@ -177,7 +177,7 @@ var plantNames = [
 		'personality': 'flighty',
 		'narrative': ['Sometime within the next century, stories of life in this place—the stories that constitute almost the entirety of my childhood—will sound, to new generations, like fiction. The tether between what is and what used to be, constantly stretching under the weight of history and progress, will not stretch any more. It will snap.', 'In this moment of monumental import, this apex of a turn beyond which lay our survival or eradication, climate change is going to render our past as unrecognizable as our future.', 'the world in which those stories took place may well vanish, in its place a different, emptier world—emptier of nature, emptier of life; the stories, once lost, lost forever.'],
 		'quote': '"it will snap."',
-		'symbol': 'Ѫ',
+		'symbol': '⟁',
 		'color': '#009f3c',
 	},
 
@@ -195,7 +195,7 @@ var plantNames = [
 		'personality': 'chatty',
 		'narrative': ['So sitting there, on sand and the countless soft shards left behind by clams and mussels and oysters over decades, I couldn’t loose myself of the knowledge that the ocean is beginning to die.', 'The truth is that the ocean that looks so beautiful and unchanging is well on its way to becoming a vast garbage dump full of plastic and of heavy metals, where little survives but jellyfish. It will not smell the same. Its colors will change. And most sea-birds, of course, will die with it.', 'We have entered — already, in some places — into an era of chaos and great pain, and if we ask the universe to make us feel optimistic about that somehow, even as others suffer far more than we do, we’re asking for illusion.'],
 		'quote': '"an era of chaos and great pain"',
-		'symbol': 'ୠ',
+		'symbol': '⧖',
 		'color': '#00e600',
 	},
 
@@ -213,7 +213,7 @@ var plantNames = [
 		'personality': 'funny',
 		'narrative': ['It’s a gut-churning thing to see the names of places you love, those territories of the self and heart, suddenly headlines in a story of unspeakable horror. A tornado of flame, generated by infernos of such ferocity they create their own weather, rolling a fire truck. An unborn child who will never know their father, only his sacrifice.', 'We all know someone who has lost something; everything. Photos from friends of a wall of fire racing across paddocks, engulfing life as it was once known. Everything is gone. The scars on our landscape will heal, but will we?', 'But there are snapshots of this season I won’t forget. Toddlers receiving commendations for bravery on behalf of fathers who will miss a lifetime of milestones. Stepping onto the tarmac under that ominous, orange sky, the scarcest smattering of ash on the breeze. Evacuation sirens; smoke so dense it cancels out the sun. The fear in my son’s eyes as he struggled to catch a breath. Thousands upon thousands of livestock charred and scattered by the road; millions upon millions of native animals – likely entire species – incinerated.'],
 		'quote': '"everything is gone."',
-		'symbol': 'Ӵ',
+		'symbol': '⧲',
 		'color': '#29a329',
 	},
 
@@ -231,7 +231,7 @@ var plantNames = [
 		'personality': 'flighty',
 		'narrative': ['To me, climate anxiety was never a term used to describe fear of a future environmental catastrophe. Climate anxiety was living and breathing right next to me, like a black wolf ready to pounce at the people I loved, my brother, my family', 'It meant I could dream of blue skies, but wake up to a grey nightmare. Climate anxiety was just another piece of my reality and I didn’t think that I had the power to change it.', 'I stood there, swaying to the music, connected to a whole generation of young people feeling the same anxiety, rooted in fear for our communities in danger of being swept away, of our homes at risk of catching fire, of food shortages and droughts caused by climate change. We were connected by the cold grip over our chests caused by a crisis that threatened each of us in different ways.'],
 		'quote': '"cold grip over our chests"',
-		'symbol': '၈',
+		'symbol': '⧻',
 		'color': '#0d5959',
 	},
 

@@ -142,27 +142,27 @@ body {
 
 /*rocks*/
 .zone1 {
-	background-color: #999999;
+	background-color: #edeeed;
 }
 
 /*soil*/
 .zone2 {
-	background-color:  #737373;
+	background-color:  #d7d7d6;
 }
 
 /*trees*/
 .zone3 {
-	background-color: #535353;
+	background-color: #535f47;
 }
 
 /*compost*/
 .zone4 {
-	background-color:  #4d1933;
+	background-color:  #f2bda2;
 }
 
 /*path*/
 .zone5 {
-	background-color:  #d9d9bf;
+	background-color:  #67573a;
 }
 
 /*water*/
