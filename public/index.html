@@ -5,21 +5,24 @@
   <meta charset="utf-8">
   <script type="module" src="assets/js/frameworks/jquery.js"></script>
   <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
-  <title>climate memorial</title>
-  <meta name="description" content="a simulation of sakiya">
-  <meta name="author" content="sakiya foundation">
+  <title>grief garden</title>
+  <meta name="description" content="a garden of memorials of climate grief">
+  <meta name="author" content="kyle barnes & raya ward">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
 
 <div id="container">
-	<div class="abouticon" onclick="$('#about').toggle()" href="#about"></div>
+	<div class="homeicon abouticon" onclick="$('#about').toggle()"></div>
+  <!-- <div class="homeicon nextstepsicon" onclick="$('#next-steps').toggle()"></div> -->
 	<div class="infopanel" style="display: none"> </div>
   <div id="titlescreen" onclick="hideTitle();">
-    <h2>CLIMATE MEMORIAL</h2>
+    <h2>GRIEF GARDEN</h2>
     <p class="titletext">welcome to this digital climate memorial.</p>
-    <p class="titletext">please explore the memorials scattered about and add your own by clicking on a cell.</p>
+    <p class="titletext">there are two ways to engage with this exploratory virtual space:</p>
+    <p class="titletext">     • <b>explore memorials:</b> scroll through the site and click on cells with symbols to read more about memorials that others have shared, including essays, poems, and more.</p>
+    <p class="titletext">     • <b>share a memorial:</b> click on any non-water cell to add a memorial of your own. share anything about how you have experienced mourning and grief relating to climate -- a favorite tree, a beach, a friend, a feeling -- anything you would like to memorialize.</p>
     <p class="titletext">remember to step into this (virtual) space respectfully so that we may share our grief in community with one another.</p>
     <br><br>
     click anywhere to enter
@@ -28,13 +31,26 @@
 		<div class=abouttext>ABOUT THIS PROJECT:
 			<div onclick="$('#about').toggle()" style="float: right">x</div>
 		<br><br>
-		CLIMATE MEMORIAL is an exploratory space, containing stories of plants, animals, and other memorialized climate grief.
+		GRIEF GARDEN is an exploratory space, containing stories of plants, animals, and other memorialized climate grief.
     Explore the canvas by clicking on cells to either learn more about a memorial or to add your own -- this can be a favorite tree, a beach, a friend, anything that you would like to memorialize.
     <br><br>
     Please be respectful of this space and of what others have shared as you enter so that we may share our grief in community.
     <br><br>
-    CLIMATE MEMORIAL was created by Kyle Barnes and Raya Ward and adapted from <a href="http://root.schloss-post.com/">Permaculture Network</a> by <a href="http://zhexi.info">Gary Zhexi Zhang</a> and <a href="http://agnescameron.info">Agnes Cameron</a>.
+    GRIEF GARDEN was created by <a href="https://www.kylebarn.es/">Kyle Barnes</a> and <a href="https://www.rayamward.com/">Raya Ward</a> and adapted from <a href="http://root.schloss-post.com/">Permaculture Network</a> by <a href="http://zhexi.info">Gary Zhexi Zhang</a> and <a href="http://agnescameron.info">Agnes Cameron</a>.
 	</div>
+
+</div>
+<div id="next-steps" style="display: none">
+  <div class=abouttext>ABOUT THIS PROJECT:
+    <div onclick="$('#next-steps').toggle()" style="float: right">x</div>
+  <br><br>
+  CLIMATE MEMORIAL is an exploratory space, containing stories of plants, animals, and other memorialized climate grief.
+  Explore the canvas by clicking on cells to either learn more about a memorial or to add your own -- this can be a favorite tree, a beach, a friend, anything that you would like to memorialize.
+  <br><br>
+  Please be respectful of this space and of what others have shared as you enter so that we may share our grief in community.
+  <br><br>
+  CLIMATE MEMORIAL was created by Kyle Barnes and Raya Ward and adapted from <a href="http://root.schloss-post.com/">Permaculture Network</a> by <a href="http://zhexi.info">Gary Zhexi Zhang</a> and <a href="http://agnescameron.info">Agnes Cameron</a>.
+</div>
 
 </div>
 

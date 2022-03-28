@@ -111,7 +111,7 @@ function eachSecond() {
 		$( this ).html(wave);
 	})
 
-	moveAnimals(animals);
+	// moveAnimals(animals);
 }
 
 //queries the time every second, runs regular events
@@ -137,6 +137,9 @@ async function runMainLoop(){
 		}
 
 		eachSecond();
+    if(today.getSeconds()%2 === 0){
+      moveAnimals(animals);
+    }
 		await sleep(1000);
 
 	}

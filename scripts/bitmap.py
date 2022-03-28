@@ -4,7 +4,7 @@ import numpy as np
 import sys
 
 # print("hello?")
-im = Image.open("./zones2.png")
+im = Image.open("./zones5.png")
 # print(im.format, im.size, im.mode)
 
 p = np.array(im)

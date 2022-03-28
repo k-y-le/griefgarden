@@ -14,17 +14,24 @@ body {
 	background-color: orange !important;
 }
 
-.abouticon {
+.homeicon {
 	height: auto;
-	top: 2vh;
-	left: 2vh;
 	width: 50px;
+	top: 2vh;
 	height: 50px;
-	background-image: url('../img/question-mark.png');
-	background-size: cover;
+	background-repeat: no-repeat;
+	background-size: contain;
 	/*background-color: blue;*/
 	position: fixed;
 	z-index: 10;
+}
+.abouticon {
+	left: 2vh;
+	background-image: url('../img/question.png');
+}
+.nextstepsicon {
+	right: 2vh;
+	background-image: url('../img/arrow.png');
 }
 
 #about {
@@ -83,7 +90,7 @@ body {
 	z-index: 10;
 	font-size: 18px;
 	color: white;
-	padding: 20%;
+	padding: 15%;
 	font-family: courier;
 	overflow-wrap: normal;
 }
