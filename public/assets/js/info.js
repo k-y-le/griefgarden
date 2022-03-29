@@ -90,7 +90,7 @@ function showInfo (cellID) {
 
     $('.infopanel').html("<p style='padding:20px'> in " + cell.zoneName + "...</p>");
 
-    if (cell.zone != 6) {
+    if (cell.zone != 6 && cell.zone != 5) {
       // panel with information about memorial
       var $memInfo = $('<div/>', {
         class: 'infobox',
