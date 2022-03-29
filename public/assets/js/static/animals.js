@@ -151,6 +151,19 @@ var animalNames = {
 		'quote': '"I am always falling in to terror"',
 		'narrative': ['I want to wake up with my heart</br>not aching like death,</br>but I am always falling</br>in to terror. I’m a good person.', 'I grieve to appropriate degrees.</br>I mourn this season. This moment.</br>I mourn for the polar bear</br>drifting out of history</br>on a wedge of melting ice.', 'More than anything, I want to tell you</br>this. I want to disappear</br>in the night. I want</br>the night to vanish from memory.</br>I want to tell you</br>how this happened.']
 	},
+	"seed":{
+		"name": "seed",
+		'author': 'chris latray',
+		'link': 'https://poets.org/poem/post-factual-love-poem',
+		"zones": [1, 2],
+		"number": 8,
+		"symbol": '⬡',
+		"shades": ["#D5843E", "#BB6827", "#9D4B12"],
+		"personality": "timid",
+		"type": "amphibian",
+		'quote': '"an entire universe sprout"',
+		'narrative': ['I am incapable of saving</br>my dying world,</br>but what about theirs?', 'Might an entire universe sprout,</br>green and woody limbs and vines</br>erupting from my cheek,</br>wreathing my entire head,</br>until my body surrenders itself</br>as compost to the flowering</br>of a lush new multiverse?', 'If an entire world might exist</br>on a mote of pollen clinging to</br>the flower of a thistle,</br>then what about the blueberry seed</br>wedged into the chasm</br>of my broken tooth?']
+	}
 }
 
 
