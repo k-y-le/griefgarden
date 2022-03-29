@@ -57,7 +57,7 @@ function addMemorial (cellID) {
   var color = $('#memColorInput').val();
   var author = $('#memAuthorInput').val();
   if (title && desc && color) {
-    if (title.length <= 500 && desc.length <= 1000 && author.length <= 500) {
+    if (title.length <= 500 && desc.length <= 5000 && author.length <= 500) {
       $('#errorText').hide();
       var mem = new Memorial(cellID, $('#memTitleInput').val(), $('#memAuthorInput').val(), [$('#memDescInput').val()], $('#memColorInput').val(), zoneSymbols[cells[cellID].zone - 1]);
       var zoneCol = zoneColors[cells[mem.id].zone - 1];
@@ -70,7 +70,7 @@ function addMemorial (cellID) {
       $('.infopanel').toggle();
 
       $.post("/addmem", mem, function(data, status){
-        console.log("addmem post called -- do stuff in index.js");
+        console.log("memorial being added to database");
       });
     } else {
       $('#errorText').html('please limit your information to 500 characters for title and author, and 5000 characters for description').show();
