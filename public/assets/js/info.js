@@ -27,7 +27,7 @@ function showMemorialInput (cellID) {
             class: 'speechpanel',
         })
         .appendTo('#container')
-        .html("<form action='addmem' method='POST'><p id='errorText' style='color:red;display:none;'>please fill out all required fields to share your memorial</p>"
+        .html("<form action='addmem' method='POST'><p id='errorText' style='color:red;display:none;'>please fill out all required fields in order to share your memorial</p>"
         + "<label for='memTitleInput'>what are you mourning?</label></br><textarea id='memTitleInput' type='text' name='memTitle'></textarea></br></br>"
         + "<label for='memDescInput'>why are you mourning? share a story, emotion, or message for your memorial.</label></br><textarea id='memDescInput' type='text' name='memDesc'></textarea></br></br>"
         + "<label for='memAuthorInput'>what is your name? (optional)</label></br><textarea id='memAuthorInput' type='text' name='memAuthor'></textarea></br></br>"
@@ -52,22 +52,33 @@ function hideSpeech () {
 }
 
 function addMemorial (cellID) {
-  if ($('#memTitleInput').val() && $('#memDescInput').val() && $('#memColorInput').val()) {
-    $('#errorText').hide();
-    var mem = new Memorial(cellID, $('#memTitleInput').val(), $('#memAuthorInput').val(), [$('#memDescInput').val()], $('#memColorInput').val(), zoneSymbols[cells[cellID].zone - 1]);
-    cells[cellID].zone = 7;
-    cells[cellID].memorial = mem;
+  var title = $('#memTitleInput').val();
+  var desc = $('#memDescInput').val();
+  var color = $('#memColorInput').val();
+  var author = $('#memAuthorInput').val();
+  if (title && desc && color) {
+    if (title.length <= 500 && desc.length <= 1000 && author.length <= 500) {
+      $('#errorText').hide();
+      var mem = new Memorial(cellID, $('#memTitleInput').val(), $('#memAuthorInput').val(), [$('#memDescInput').val()], $('#memColorInput').val(), zoneSymbols[cells[cellID].zone - 1]);
+      var zoneCol = zoneColors[cells[mem.id].zone - 1];
+      cells[cellID].zone = 7;
+      cells[cellID].memorial = mem;
 
-    console.log(cells[cellID]);
-    $(`#${cellID}`).css({'background-color': mem.color}).html("<span style='color:lightblue;mix-blend-mode:difference;'>" + mem.symbol + "</span>");
-    hideSpeech();
-    $('.infopanel').toggle();
+      console.log(cells[cellID]);
+      $(`#${cellID}`).css({'background-color': mem.color, 'color': zoneCol}).html("<span>" + mem.symbol + "</span>");
+      hideSpeech();
+      $('.infopanel').toggle();
 
-    $.post("/addmem", mem, function(data, status){
-      console.log("addmem post called -- do stuff in index.js");
-    });
+      $.post("/addmem", mem, function(data, status){
+        console.log("addmem post called -- do stuff in index.js");
+      });
+    } else {
+      $('#errorText').html('please limit your information to 500 characters for title and author, and 5000 characters for description').show();
+      $('#errorText').scrollTop($('#errorText')[0].scrollHeight);
+    }
   } else {
-    $('#errorText').show();
+    $('#errorText').html('please fill out all required fields in order to share your memorial').show();
+    $('#errorText').scrollTop($('#errorText')[0].scrollHeight);
   }
 }
 

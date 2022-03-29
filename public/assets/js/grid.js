@@ -164,11 +164,14 @@ var generateGrid = new Promise( function(resolve, reject){
     }
     $.get('/getmem', function(data, status){
       data.forEach((mem) => {
+        console.log(mem.id);
         var newMem = new Memorial(mem.id, mem.title, mem.author, [mem.desc], mem.color, zoneSymbols[cells[mem.id].zone - 1]);
+        var zoneCol = zoneColors[cells[mem.id].zone - 1];
         cells[mem.id].zone = 7;
         cells[mem.id].memorial = newMem;
         // make the memorial show up now!
-        $(`#${newMem.id}`).css({'background-color': newMem.color}).html("<span style='color:lightblue;mix-blend-mode:difference;'>" + newMem.symbol + "</span>");
+
+        $(`#${newMem.id}`).css({'background-color': newMem.color, 'color': zoneCol}).html("<span>" + newMem.symbol + "</span>");
       });
     });
     distributeAnimals();
