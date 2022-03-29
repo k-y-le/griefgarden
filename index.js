@@ -86,13 +86,13 @@ app.post('/addmem', function(req, res){
   try {
     const client = await pool.connect();
     const result = await client.query(
-      'INSERT INTO memorial (id, title, author, desc, color, time) VALUES ($1, $2, $3, $4, $5, $6)',
-      [name, email, id],
+      'INSERT INTO memorial (id, title, author, narrative, color, time) VALUES ($1, $2, $3, $4, $5, $6)',
+      [req.body.id, req.body.title, req.body.author, req.body['narrative[]'], req.body.color, time],
       (error, results) => {
         if (error) {
           throw error
         }
-        response.status(200).send(`User modified with ID: ${id}`)
+        res.status(200).send(`memorial modified at cell: ${req.body.id}`)
       }
     )
     const results = { 'results': (result) ? result.rows : null};
