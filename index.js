@@ -9,7 +9,7 @@ const { Pool } = require('pg');
 const pool = (() => {
   if (process.env.NODE_ENV !== 'production') {
       return new Pool({
-          connectionString: process.env.DATABASE_URL,
+          connectionString: "postgresql://localhost:5432/griefgarden",
           ssl: false
       });
   } else {
@@ -88,30 +88,20 @@ var public = path.join(__dirname, 'public');
 //   // res.sendFile(path.join(public, 'index.html'));
 // });
 
-app.post('/addmem', async(req, res) => {
-  console.log("adding memorial " + req.body.title + " in cell " + req.body.id);
+app.post('/addmem', (req, res) => {
   // connect to db
   // add memorial
-  try {
-    var time = new Date().toString();
-    const client = await pool.connect();
-    const result = await client.query(
-      'INSERT INTO memorial (id, title, author, narrative, color, time) VALUES ($1, $2, $3, $4, $5, $6)',
-      [req.body.id, req.body.title, req.body.author, req.body['narrative[]'], req.body.color, time],
-      (error, results) => {
-        if (error) {
-          throw error
-        }
-        res.status(200).send(`memorial modified at cell: ${req.body.id}`)
+  var time = new Date().toString();
+  pool.query(
+    'INSERT INTO memorial (id, title, author, narrative, color, time) VALUES ($1, $2, $3, $4, $5, $6)',
+    [req.body.id, req.body.title, req.body.author, req.body['narrative[]'], req.body.color, time],
+    (error, results) => {
+      if (error) {
+        throw error
       }
-    )
-    const results = { 'results': (result) ? result.rows : null};
-    res.send(results);
-    client.release();
-  } catch (err) {
-    console.error(err);
-    res.send("Error " + err);
-  }
+      res.status(200).send(`memorial ${req.body.title} added at cell: ${req.body.id}`);
+    }
+  )
   // var db = new sqlite3.Database('./mem.db', sqlite3.OPEN_READWRITE, (err) => {
   //   if (err) {
   //     console.log(err.code);
@@ -123,23 +113,19 @@ app.post('/addmem', async(req, res) => {
   // });
 });
 
-app.get('/getmem', async(req, res) => {
+app.get('/getmem', (req, res) => {
   // connect to db
   // get all in memorial table
   // res.send(all)
-  try {
-    const client = await pool.connect();
-    const result = await client.query('SELECT * FROM memorial');
-    const results = { 'results': (result) ? result.rows : null};
+  pool.query('SELECT * FROM memorial', (error, results) => {
+    if (error) {
+      throw(error);
+    }
     console.log("---RESULTS OF GET---");
-    console.log(results);
+    console.log(results.rows);
     console.log("---RESULTS OF GET---");
-    res.send(results);
-    client.release();
-  } catch (err) {
-    console.error(err);
-    res.send("Error " + err);
-  }
+    res.send(results.rows);
+  });
   // var db = new sqlite3.Database('./mem.db', sqlite3.OPEN_READWRITE, (err) => {
   //   if (err) {
   //     console.log(err.code);
