@@ -6,12 +6,21 @@ var path = require('path');
 var app = express()
 
 const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
+const pool = (() => {
+  if (process.env.NODE_ENV !== 'production') {
+      return new Pool({
+          connectionString: process.env.DATABASE_URL,
+          ssl: false
+      });
+  } else {
+      return new Pool({
+          connectionString: process.env.DATABASE_URL,
+          ssl: {
+              rejectUnauthorized: false
+            }
+      });
   }
-});
+})();
 
 //
 // var db = new sqlite3.Database('./mem.db', sqlite3.OPEN_READWRITE, (err) => {
