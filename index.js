@@ -84,6 +84,7 @@ app.post('/addmem', async(req, res) => {
   // connect to db
   // add memorial
   try {
+    var time = new Date().toString();
     const client = await pool.connect();
     const result = await client.query(
       'INSERT INTO memorial (id, title, author, narrative, color, time) VALUES ($1, $2, $3, $4, $5, $6)',
@@ -107,7 +108,6 @@ app.post('/addmem', async(req, res) => {
   //     console.log(err.code);
   //     return;
   //   }
-  //   var time = new Date().toString();
   //   let insert = 'INSERT INTO memorial (id, title, author, desc, color, time) VALUES (?,?,?,?,?,?)';
   //   db.run(insert, [req.body.id, req.body.title, req.body.author, req.body['narrative[]'], req.body.color, time]);
   //   runQueries(db);
@@ -122,6 +122,9 @@ app.get('/getmem', async(req, res) => {
     const client = await pool.connect();
     const result = await client.query('SELECT * FROM memorial');
     const results = { 'results': (result) ? result.rows : null};
+    console.log("---RESULTS OF GET---");
+    console.log(results);
+    console.log("---RESULTS OF GET---");
     res.send(results);
     client.release();
   } catch (err) {
