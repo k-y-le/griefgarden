@@ -163,6 +163,7 @@ var generateGrid = new Promise( function(resolve, reject){
         }
     }
     $.get('/getmem', function(data, status){
+      console.log(data);
       data.forEach((mem) => {
         console.log(mem);
         var newMem = new Memorial(mem.id, mem.title, mem.author, mem.narrative, mem.color, zoneSymbols[cells[mem.id].zone - 1]);
