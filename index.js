@@ -79,7 +79,7 @@ var public = path.join(__dirname, 'public');
 //   // res.sendFile(path.join(public, 'index.html'));
 // });
 
-app.post('/addmem', function(req, res){
+app.post('/addmem', async(req, res) => {
   console.log("adding memorial " + req.body.title + " in cell " + req.body.id);
   // connect to db
   // add memorial
@@ -114,7 +114,7 @@ app.post('/addmem', function(req, res){
   // });
 });
 
-app.get('/getmem', function(req, res){
+app.get('/getmem', async(req, res) => {
   // connect to db
   // get all in memorial table
   // res.send(all)
