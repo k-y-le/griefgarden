@@ -59,7 +59,8 @@ function addMemorial (cellID) {
   if (title && desc && color) {
     if (title.length <= 500 && desc.length <= 5000 && author.length <= 500) {
       $('#errorText').hide();
-      var mem = new Memorial(cellID, $('#memTitleInput').val(), $('#memAuthorInput').val(), [$('#memDescInput').val()], $('#memColorInput').val(), zoneSymbols[cells[cellID].zone - 1]);
+      var memSymb = zoneSymbols[cells[cellID].zone - 1];
+      var mem = new Memorial(cellID, $('#memTitleInput').val(), $('#memAuthorInput').val(), [$('#memDescInput').val()], $('#memColorInput').val(), memSymb[Math.floor(Math.random() * memSymb.length)]);
       var zoneCol = zoneColors[cells[mem.id].zone - 1];
       cells[cellID].zone = 7;
       cells[cellID].memorial = mem;

@@ -59,7 +59,7 @@ body {
 	overflow: scroll;
 	top: 2.5vh;
 	right: 2.5vw;
-	width: 350px;
+	width: 30vw;
 	position: fixed;
 	background-color:  #e6e6e6;
 	z-index: 10;

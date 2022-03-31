@@ -10,6 +10,6 @@ var zoneNames = {
 }
 
 var zoneColors = ['#edeeed', '#d7d7d6', '#535f47', '#f2bda2', '#67573a', '#617dd1', '#CFD11A'];
-var zoneSymbols = ["▤", "▥", "▦", "▧", "▨", "", ""]; // last are blank because these zones shouldnt have memorials, but it's a just-in-case kinda thing
+var zoneSymbols = [["◰", "◱", "◲", "◳"], ["⎛", "⎞"], ["⍋", "⍒"], ["☰", "☱", "☲", "☳", "☴", "☵", "☶", "☷"], "", "", ""]; // last are blank because these zones shouldnt have memorials, but it's a just-in-case kinda thing
 
 export {zones, zoneNames, zoneColors, zoneSymbols}
