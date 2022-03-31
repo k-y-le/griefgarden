@@ -153,15 +153,13 @@ function showInfo (cellID) {
         })
         .appendTo($plantInfo)
         .html(cell.plant.name + "   " + "[<font color= "+ cell.plant.color +">" + cell.plant.symbol + "</font>]" + "<br>" +
-            "<i>" + cell.plant.author + "</i>" + "</br></br>")
+            "<i>" + cell.plant.author + "</i>" + "</br></br>" + cell.plant.narrative[Math.floor(Math.random() * cell.plant.narrative.length)] + "<br><br><a href='" + cell.plant.link + "'>read more</a>")
 
-        if(cell.plant.notes !== '') $symbolInfo.append(cell.plant.notes + "</br> </br>" )
-
-        $('<span/>', {
-            class: 'companion',
-            click: (function(){ showSpeech(cell.plant) } ),
-        }).appendTo($symbolInfo)
-        .html("read memorial")
+        // $('<span/>', {
+        //     class: 'companion',
+        //     click: (function(){ showSpeech(cell.plant) } ),
+        // }).appendTo($symbolInfo)
+        // .html("read memorial")
 
     }
 
@@ -177,13 +175,13 @@ function showInfo (cellID) {
         })
         .appendTo($occupantInfo)
         .html(cell.occupant.name + "   " + "[<font color= "+ cell.occupant.color +">" + cell.occupant.symbol + "</font>]" + "<br>" +
-             "<i>" + cell.occupant.author + "</i>" + "</br></br>")
-
-        $('<span/>', {
-            class: 'companion',
-            click: (function(){   showSpeech(occupant) } ),
-        }).appendTo($symbolInfo)
-        .html("read memorial")
+             "<i>" + cell.occupant.author + "</i>" + "</br></br>" + cell.occupant.narrative[Math.floor(Math.random() * cell.occupant.narrative.length)] + "<br><br><a href='" + cell.occupant.link + "'>read more</a>")
+        // 
+        // $('<span/>', {
+        //     class: 'companion',
+        //     click: (function(){   showSpeech(occupant) } ),
+        // }).appendTo($symbolInfo)
+        // .html("read memorial")
     }
 
 }
