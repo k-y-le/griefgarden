@@ -67,6 +67,7 @@ class Memorial {
     this.narrative = narrative;
     this.color = color;
     this.symbol = symbol;
+    this.link = '';
   }
 }
 

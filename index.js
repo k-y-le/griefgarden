@@ -1,7 +1,8 @@
 const express = require('express');
-var router = require('./router');
+const router = require('./router');
 // var sqlite3 = require('sqlite3');
-var path = require('path');
+const path = require('path');
+const sanitizeHtml = require('sanitize-html');
 
 var app = express()
 
@@ -93,8 +94,8 @@ app.post('/addmem', (req, res) => {
   // add memorial
   var time = new Date().toString();
   pool.query(
-    'INSERT INTO memorial (id, title, author, narrative, color, time) VALUES ($1, $2, $3, $4, $5, $6)',
-    [req.body.id, req.body.title, req.body.author, req.body['narrative[]'], req.body.color, time],
+    'INSERT INTO memorial (id, title, author, narrative, color, time, link) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+    [req.body.id, sanitizeHtml(req.body.title), sanitizeHtml(req.body.author), sanitizeHtml(req.body['narrative[]']), req.body.color, time, sanitizeHtml(req.body.link)],
     (error, results) => {
       if (error) {
         throw error

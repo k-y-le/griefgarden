@@ -28,9 +28,10 @@ function showMemorialInput (cellID) {
         })
         .appendTo('#container')
         .html("<form action='addmem' method='POST'><p id='errorText' style='color:red;display:none;'>please fill out all required fields in order to share your memorial</p>"
-        + "<label for='memTitleInput'>what are you mourning?</label></br><textarea id='memTitleInput' type='text' name='memTitle'></textarea></br></br>"
-        + "<label for='memDescInput'>why are you mourning? share a story, emotion, or message for your memorial.</label></br><textarea id='memDescInput' type='text' name='memDesc'></textarea></br></br>"
-        + "<label for='memAuthorInput'>what is your name? (optional)</label></br><textarea id='memAuthorInput' type='text' name='memAuthor'></textarea></br></br>"
+        + "<label for='memTitleInput'>what are you mourning?</label></br><textarea id='memTitleInput' type='text' name='memTitle' class='memInput'></textarea></br></br>"
+        + "<label for='memDescInput'>why are you mourning? share a story, emotion, or message for your memorial.</label></br><textarea id='memDescInput' type='text' name='memDesc' class='memInput'></textarea></br></br>"
+        + "<label for='memAuthorInput'>what is your name? (optional)</label></br><textarea id='memAuthorInput' type='text' name='memAuthor' class='memInput'></textarea></br></br>"
+        + "<label for='memLinkInput'>if you would like to include a link to learn more or take action, please submit it here. (optional)</label></br><input id='memLinkInput' type='text' name='memLink' class='memInput'></input></br></br>"
         + "<label for='memColorInput'>pick a color for your memorial</labl></br><input id='memColorInput' type='color' name='memColor'></input></br></br>"
         + "<button id='addMemorial' type='button'>add memorial</button></form>")
 
@@ -56,15 +57,27 @@ function addMemorial (cellID) {
   var desc = $('#memDescInput').val();
   var color = $('#memColorInput').val();
   var author = $('#memAuthorInput').val();
+  var link = $('#memLinkInput').val();
   if (title && desc && color) {
-    if (title.length <= 500 && desc.length <= 5000 && author.length <= 500) {
+    if (title.length <= 1000 && desc.length <= 5000 && author.length <= 1000 && link.length <= 1000) {
       $('#errorText').hide();
       var memSymb = zoneSymbols[cells[cellID].zone - 1];
       var mem = new Memorial(cellID, $('#memTitleInput').val(), $('#memAuthorInput').val(), [$('#memDescInput').val()], $('#memColorInput').val(), memSymb[Math.floor(Math.random() * memSymb.length)]);
       var zoneCol = zoneColors[cells[mem.id].zone - 1];
       cells[cellID].zone = 7;
       cells[cellID].memorial = mem;
-
+      if (link) {
+        var sanitizeLink;
+        link.includes("https://") ? sanitizeLink = link : sanitizeLink = "https://" + link;
+        try {
+          sanitizeLink = new URL(sanitizeLink);
+        } catch (_) {
+          $('#errorText').html('your link seems to be invalid. please try again with a corrected link (be sure to include https://)').show();
+          $('#errorText').scrollTop($('#errorText')[0].scrollHeight);
+          return;
+        }
+        mem.link = sanitizeLink.toString();
+      }
       console.log(cells[cellID]);
       $(`#${cellID}`).css({'background-color': mem.color, 'color': zoneCol}).html("<span>" + mem.symbol + "</span>");
       hideSpeech();
@@ -74,7 +87,7 @@ function addMemorial (cellID) {
         console.log("memorial being added to database");
       });
     } else {
-      $('#errorText').html('please limit your information to 500 characters for title and author, and 5000 characters for description').show();
+      $('#errorText').html('please limit your information to 1000 characters for title/author/link, and 5000 characters for description').show();
       $('#errorText').scrollTop($('#errorText')[0].scrollHeight);
     }
   } else {
@@ -87,7 +100,6 @@ function showInfo (cellID) {
     hideSpeech();
     var cell = cells[cellID];
     $('.infopanel').children().remove();
-    $('.infopanel').toggle();
 
     $('.infopanel').html("<p style='padding:20px'> in " + cell.zoneName + "...</p>");
 
@@ -97,15 +109,26 @@ function showInfo (cellID) {
         class: 'infobox',
       })
       .appendTo('.infopanel')
-      if(cell.memorial && $('.infopanel').is(":visible")) {
+
+      $('.infopanel').show();
+      if(cell.memorial) {
+        // $memInfo =  $('<div/>', {
+        //     class: 'speechpanel',
+        // })
+        // .appendTo('#container')
+        var cellHTML = cell.memorial.title + "[<font color='" + cell.memorial.color + "'>" + cell.memorial.symbol + "</font>]   </br><i>"
+        + cell.memorial.author + "</i>" + "</br></br>"
+        + cell.memorial.narrative + "</br></br>";
+        if (cell.memorial.link){
+          cellHTML += "<a target='_blank' href='" + cell.memorial.link + "'>visit link</a>";
+        }
         // show the memorial title, author, description
+        // TODO: change this to be centered modal
         var $symbolInfo =  $('<p/>', {
             class: 'symbolinfo',
         })
         .appendTo($memInfo)
-        .html(cell.memorial.title + "[<font color='" + cell.memorial.color + "'>" + cell.memorial.symbol + "</font>]   </br><i>"
-        + cell.memorial.author + "</i>" + "</br></br>"
-        + cell.memorial.narrative + "</br></br>");
+        .html(cellHTML);
 
         // $('<span/>', {
         //     class: 'companion',
@@ -113,6 +136,8 @@ function showInfo (cellID) {
         // }).appendTo($symbolInfo)
         // .html("show description")
       } else {
+        // $('.speechpanel').hide();
+        // $('.infopanel').show();
         // input field to add a new memorial
         var $symbolInfo =  $('<p/>', {
             class: 'symbolinfo',
@@ -176,7 +201,7 @@ function showInfo (cellID) {
         .appendTo($occupantInfo)
         .html(cell.occupant.name + "   " + "[<font color= "+ cell.occupant.color +">" + cell.occupant.symbol + "</font>]" + "<br>" +
              "<i>" + cell.occupant.author + "</i>" + "</br></br>" + cell.occupant.narrative[Math.floor(Math.random() * cell.occupant.narrative.length)] + "<br><br><a href='" + cell.occupant.link + "'>read more</a>")
-        // 
+        //
         // $('<span/>', {
         //     class: 'companion',
         //     click: (function(){   showSpeech(occupant) } ),

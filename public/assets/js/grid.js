@@ -163,10 +163,11 @@ var generateGrid = new Promise( function(resolve, reject){
         }
     }
     $.get('/getmem', function(data, status){
-      console.log(data);
+      // console.log(data);
       data.forEach((mem) => {
         var memSymb = zoneSymbols[cells[mem.id].zone - 1];
         var newMem = new Memorial(mem.id, mem.title, mem.author, mem.narrative, mem.color, memSymb[Math.floor(Math.random() * memSymb.length)]);
+        if (mem.link) newMem.link = mem.link;
         var zoneCol = zoneColors[cells[mem.id].zone - 1];
         cells[mem.id].zone = 7;
         cells[mem.id].memorial = newMem;
