@@ -16,7 +16,7 @@
 <div id="container">
 	<div class="homeicon abouticon" onclick="$('#about').toggle()"></div>
   <div class="homeicon nextstepsicon" onclick="$('#next-steps').toggle()"></div>
-	<div class="infopanel" style="display: none"> </div>
+	<div class="infopanel" style="display: none"></div>
   <div id="titlescreen" onclick="hideTitle();">
     <h2>GRIEF GARDEN</h2>
     <p class="titletext">this digital memorial aims to hold space for <b>climate grief</b>.</p>
@@ -29,7 +29,7 @@
   </div>
 	<div id="about" class="popup" style="display: none">
 		<div class=abouttext>ABOUT THIS PROJECT:
-			<div onclick="$('#about').toggle()" style="float: right">x</div>
+			<div onclick="$('#about').toggle()" class="pointer" style="float: right">x</div>
 		<br><br>
 		GRIEF GARDEN is an exploratory space, containing stories of plants, animals, and other memorialized climate grief.
     Explore the canvas by clicking on cells to either learn more about a memorial or to add your own -- this can be a favorite tree, a beach, a friend, anything that you would like to memorialize.
@@ -42,7 +42,7 @@
 </div>
 <div id="next-steps" class="popup" style="display: none">
   <div class=abouttext>now that we're all here, what do we do?
-    <div onclick="$('#next-steps').toggle()" style="float: right">x</div>
+    <div onclick="$('#next-steps').toggle()" class="pointer" style="float: right">x</div>
     <br><br>
     we need to mourn.
     <br><br>

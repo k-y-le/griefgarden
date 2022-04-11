@@ -101,7 +101,7 @@ function showInfo (cellID) {
     var cell = cells[cellID];
     $('.infopanel').children().remove();
 
-    $('.infopanel').html("<p style='padding:20px'> in " + cell.zoneName + "...</p>");
+    $('.infopanel').html("<div onclick='$(`.infopanel`).toggle()' class='infopanel-x pointer'>x</div><p style='padding:20px'> in " + cell.zoneName + "...</p>");
 
     if (cell.zone != 6 && cell.zone != 5) {
       // panel with information about memorial

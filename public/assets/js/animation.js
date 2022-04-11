@@ -2,6 +2,7 @@ import { cells, animals } from './grid.js';
 import animalNames from './static/animals.js';
 import { Animal } from './static/classes.js';
 import { xnum, ynum } from './static/constants.js'
+import { showInfo } from './info.js';
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -91,6 +92,7 @@ function printQuote() {
 
   if (cells[randCellNumber].occupant) var quoteHTML = '['+randCell.occupant.symbol+'] '+randCell.occupant.quote
   else var quoteHTML = '['+randCell.plant.symbol+'] '+randCell.plant.quote
+
 	//put speech above cell
 	var $speechBox = $('<div/>', {
 			class: "speechbox",
@@ -99,8 +101,14 @@ function printQuote() {
 			left: cellPos.left,
 			top: cellPos.top-20,
 		})
-		.html(quoteHTML)
+		.html('<div class="pointer">' + quoteHTML + '</div>')
 		.appendTo('#container')
+    .click(function(e) {
+      e.stopPropagation();
+      showInfo(randCellNumber);
+    })
+
+  // $speechBox.click(showInfo(randCellNumber));
 
 }
 
