@@ -119,7 +119,7 @@ function showInfo (cellID) {
         var cellHTML = cell.memorial.title + "[<font color='" + cell.memorial.color + "'>" + cell.memorial.symbol + "</font>]   </br><i>"
         + cell.memorial.author + "</i>" + "</br></br>"
         + cell.memorial.narrative + "</br></br>";
-        if (cell.memorial.link){
+        if (cell.memorial.link != ""){
           cellHTML += "<a target='_blank' href='" + cell.memorial.link + "'>visit link</a>";
         }
         // show the memorial title, author, description
